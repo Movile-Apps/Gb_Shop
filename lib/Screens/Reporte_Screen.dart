@@ -9,7 +9,11 @@ import 'package:gb_shop/Screens/Screens.dart';
     Widget build(BuildContext context) {
       return  Scaffold(
         appBar: AppBar(
-          title: const Text('Crear Reporte'),),
+          title: const Text('Crear Reporte'),
+          elevation: 0,
+          centerTitle: true,
+          
+          ),
         body: Center(
           child: ElevatedButton(
             onPressed: (){

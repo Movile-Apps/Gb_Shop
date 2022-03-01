@@ -8,7 +8,11 @@ import 'package:flutter/material.dart';
     Widget build(BuildContext context) {
       return  Scaffold(
         appBar: AppBar(
-          title: const Text('Sobre nosotros'),),
+          title: const Text('Sobre nosotros'),
+          elevation: 0,
+          centerTitle: true,
+          ),
+          
           //Cards about
         body: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
@@ -64,7 +68,7 @@ import 'package:flutter/material.dart';
        child: Column(
         children: <Widget>[
 
-           const Text('Sobre el proyecto', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+           const Text('Sobre el proyecto', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),),
            const SizedBox(height: 20,),
            const Text('Gb-Shop es una aplicacion que nacio por el deseo de querer ayudar a hacer un cambio positivo para el medio ambiente, a la vez, buscando motivar a mas personas de hacer lo mismo mediante una herramienta facil y sencilla de usar.',
            style: TextStyle(fontSize: 15),),
@@ -90,7 +94,7 @@ Widget _crearCard3() {
             const Text('Rafael Cauich - Diseñador', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
             const SizedBox(height: 20,),
             const Text('Programador estudiante del quinto semestre en la UTM, en el grupo A DSM. Que se divierte decorando toda la parte visual de la aplicaión.'),
-            Image.asset('assets/RF.png')
+            Image.asset('assets/RF.png', height: 500, width: 300)
          ]
        ),
      )
@@ -110,7 +114,7 @@ Widget _crearCard4() {
             const Text('Daniel Puch - Programador', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
             const SizedBox(height: 20,),
             const Text('Programador estudiante del quinto semestre en la UTM, en el grupo A DSM. Que se divierte creando toda la parte interna de la aplicaión.'),
-            Image.asset('assets/DN.png')
+            Image.asset('assets/DN.png', height: 500, width: 300)
          ]
        ),
      )

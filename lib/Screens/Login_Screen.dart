@@ -9,7 +9,9 @@ import 'package:gb_shop/Screens/LoginScreens.dart';
     Widget build(BuildContext context) {
       return  Scaffold(
         appBar: AppBar(
-          title: const Text('Bienvenido, De nuevo'),
+          title: const Text('Iniciar Sesion'),
+          elevation: 0,
+          centerTitle: true,
         ),
         body: Center(
           child: ElevatedButton(

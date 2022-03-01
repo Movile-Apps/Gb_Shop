@@ -1,27 +1,65 @@
+import 'dart:html';
 import 'package:flutter/material.dart';
-import 'package:gb_shop/routes/app_routes.dart';
-import 'package:gb_shop/themes/AppTheme.dart';
+import 'package:gb_shop/Screens/screens.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
-void main() => runApp(const MyApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+void main() {
+  runApp(const MaterialApp(debugShowCheckedModeBanner: false, home: GbShop()));
+}
+
+class GbShop extends StatefulWidget{
+  const GbShop({Key? key}) : super(key: key);
+
+  @override
+  State<GbShop> createState() => _GbShopState();
+}
+
+
+class _GbShopState extends State<GbShop>{
+  final navigationKey = GlobalKey<CurvedNavigationBarState>();
+  int index = 0;
+
+  final screens = [
+    const HomeScreen(),
+    const LoginScreen(),
+    const RegistroScreen(),
+    const ReporteScreen(),
+    const ConsPOIScreen(),
+    const AboutScreen()
+
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Garbage Report',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Garbage Report'),
+    final items = <Widget>[
+      const Icon(Icons.home, size: 30,),
+      const Icon(Icons.person, size: 30,),
+      const Icon(Icons.person_search, size: 30,),
+      const Icon(Icons.book, size: 30,),
+      const Icon(Icons.point_of_sale, size: 30,),
+      const Icon(Icons.info, size: 30,),
+    ];
+
+
+    return Scaffold(
+      backgroundColor: Colors.white,
+      
+      body: screens[index],
+      bottomNavigationBar: Theme(data: Theme.of(context).copyWith(
+        iconTheme: const IconThemeData(color: Colors.white)
         ),
-        body: const Center(
-          child: Text('In process..'),
+        child: CurvedNavigationBar(key: navigationKey, 
+        color: Colors.greenAccent,
+        backgroundColor: Colors.transparent,
+        height: 60,
+        animationCurve: Curves.easeInOut,
+        animationDuration: const Duration(milliseconds: 300),
+        index: index,
+        items: items,
+        onTap: (index) => setState(() => this.index = index),
         ),
       ),
-      initialRoute: AppRoutes.initialRoute,
-      routes: AppRoutes.getRoutes(),
-      theme: AppTheme.LightTheme,
     );
   }
 }

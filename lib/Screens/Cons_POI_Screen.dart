@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
       return  Scaffold(
         appBar: AppBar(
           title: const Text('Puntos de Interes'),
+          elevation: 0,
+        centerTitle: true,
         ),
         body: const Center(
           child: Text('In process...'),

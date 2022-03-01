@@ -9,7 +9,11 @@ import 'package:gb_shop/Screens/LoginScreens.dart';
     Widget build(BuildContext context) {
       return  Scaffold(
         appBar: AppBar(
-          title: const Text('Bienvenido, aspirante a nuevo usuario'),),
+          title: const Text('Registro para usuarios nuevos'),
+          elevation: 0,
+          centerTitle: true,
+          
+          ),
         body: Center(
           child: ElevatedButton(
             onPressed: (){
