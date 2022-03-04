@@ -75,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: const TextField(
             
-            keyboardType: TextInputType.emailAddress,
+            keyboardType: TextInputType.visiblePassword,
             decoration: InputDecoration(
               icon: Icon(Icons.lock),
               hintText: 'Contraseña',

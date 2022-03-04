@@ -11,8 +11,6 @@ class AppTheme{
       backgroundColor: Colors.greenAccent,
       centerTitle: true,
       elevation: globalElevation
-      
-
     )
   );
 }
