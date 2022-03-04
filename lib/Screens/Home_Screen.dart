@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
     Widget build(BuildContext context) {
       return  Scaffold(
           appBar: AppBar(
+          backgroundColor: Colors.greenAccent,
           title: Image.asset('assets/TexLogo.png', width: 600, height: 800,),
           elevation: 0,
           centerTitle: true,

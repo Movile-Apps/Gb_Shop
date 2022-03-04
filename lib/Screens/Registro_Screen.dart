@@ -9,6 +9,7 @@ import 'package:gb_shop/Screens/LoginScreens.dart';
     Widget build(BuildContext context) {
       return  Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.greenAccent,
           title: const Text('Registro para usuarios nuevos'),
           elevation: 0,
           centerTitle: true,

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
     Widget build(BuildContext context) {
       return  Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.greenAccent,
           title: const Text('Sobre nosotros'),
           elevation: 0,
           centerTitle: true,
@@ -68,7 +69,7 @@ import 'package:flutter/material.dart';
        child: Column(
         children: <Widget>[
 
-           const Text('Sobre el proyecto', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),),
+           const Text('Sobre el proyecto', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),),
            const SizedBox(height: 20,),
            const Text('Gb-Shop es una aplicacion que nacio por el deseo de querer ayudar a hacer un cambio positivo para el medio ambiente, a la vez, buscando motivar a mas personas de hacer lo mismo mediante una herramienta facil y sencilla de usar.',
            style: TextStyle(fontSize: 15),),

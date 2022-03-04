@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
     Widget build(BuildContext context) {
       return  Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.greenAccent,
           title: const Text('Puntos de Interes'),
           elevation: 0,
         centerTitle: true,

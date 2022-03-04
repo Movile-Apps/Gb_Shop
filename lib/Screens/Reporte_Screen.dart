@@ -9,6 +9,7 @@ import 'package:gb_shop/Screens/Screens.dart';
     Widget build(BuildContext context) {
       return  Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.greenAccent,
           title: const Text('Crear Reporte'),
           elevation: 0,
           centerTitle: true,
