@@ -39,6 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
               _passwordTextField(),
               const SizedBox(height: 20.0,),
               _bottonLogin(),
+              _bottonRegistro()
             ],
           )
         ),
@@ -113,3 +114,29 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+
+Widget _bottonRegistro() {
+    return StreamBuilder(
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+        return RaisedButton(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+            child: const Text('Registrarse',
+              style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10)
+        ),
+        elevation: 10.0,
+        color: Color.fromARGB(255, 74, 135, 226),
+        onPressed: (){
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RegistroScreen(),));
+        }
+      );
+      }
+    );
+  }

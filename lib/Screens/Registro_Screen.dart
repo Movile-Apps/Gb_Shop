@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Screens/LoginScreens.dart';
-import 'package:image_picker/image_picker.dart';
 
 class RegistroScreen extends StatefulWidget{
   static String id = 'RegistroScreen';
@@ -32,24 +31,22 @@ class _RegistroScreenState extends State<RegistroScreen> {
                 height: 300.0,
               
                 ),
-              )
-              ,
-              _imageBotton(),
-              const SizedBox(height: 15.0,),
+              ),
+              
               _userTextField(),
-              const SizedBox(height: 15,),
-              _confirmTextField(),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 15,),         
               _passwordTextField(),
               const SizedBox(height: 20.0,),
-              _confirmpasswordTextField(),
+              /*_confirmpasswordTextField(),*/
               const SizedBox(height: 20.0,),
               _nombreTextField(),
               const SizedBox(height: 20.0,),
               _apellidoTextField(),
               const SizedBox(height: 20.0,),
+              /*_imageBotton(),
+              const SizedBox(height: 15.0,),*/
               
-              _bottonLogin(),
+              _bottonRegistro(),
             ],
           )
         ),
@@ -57,7 +54,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
     );
   }
 
-  Widget _imageBotton() {
+ /* Widget _imageBotton() {
     return StreamBuilder(
       builder: (BuildContext context, AsyncSnapshot snapshot){
         return RaisedButton(
@@ -82,7 +79,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
       }
     );
   }
-
+*/
   Widget _userTextField() {
     return StreamBuilder(
       builder: (BuildContext context, AsyncSnapshot snapshot){
@@ -96,27 +93,6 @@ class _RegistroScreenState extends State<RegistroScreen> {
               icon: Icon(Icons.email),
               hintText: 'ejemplo@gmail.com',
               labelText: 'Correo Electronico'
-            ),
-
-          ),
-        );
-      }
-    );
-  }
-
-  Widget _confirmTextField() {
-    return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot){
-        return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: const TextField(
-
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-
-              icon: Icon(Icons.email),
-              hintText: 'Escribe el mismo correo',
-              labelText: 'Confirma tu correo'
             ),
 
           ),
@@ -145,7 +121,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
     );
   }
 
-  Widget _confirmpasswordTextField() {
+  /*Widget _confirmpasswordTextField() {
 
     return StreamBuilder(
       builder: (BuildContext context, AsyncSnapshot snapshot){
@@ -163,7 +139,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
         );
       }
     );
-  }
+  }*/
 
     Widget _nombreTextField() {
       return StreamBuilder(
@@ -207,7 +183,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
 
 }
 
-  Widget _bottonLogin() {
+  Widget _bottonRegistro() {
     return StreamBuilder(
       builder: (BuildContext context, AsyncSnapshot snapshot){
         return RaisedButton(
@@ -226,7 +202,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
         elevation: 10.0,
         color: Colors.amber,
         onPressed: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomeScreen(),));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
         }
       );
       }

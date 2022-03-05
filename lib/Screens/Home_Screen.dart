@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gb_shop/Screens/screens.dart';
 
  class HomeScreen extends StatelessWidget{
 
@@ -9,6 +10,12 @@ import 'package:flutter/material.dart';
       return  Scaffold(
           appBar: AppBar(
           backgroundColor: Colors.greenAccent,
+          leading: IconButton(
+          icon: const Icon(Icons.person),
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
+          },
+        ),
           title: Image.asset('assets/TexLogo.png', width: 600, height: 800,),
           elevation: 0,
           centerTitle: true,
