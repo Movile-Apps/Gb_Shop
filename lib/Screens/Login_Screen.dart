@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Screens/Screens.dart';
 
@@ -113,30 +115,33 @@ class _LoginScreenState extends State<LoginScreen> {
       }
     );
   }
-}
 
-Widget _bottonRegistro() {
-    return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot){
-        return RaisedButton(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-            child: const Text('Registrarse',
-              style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.bold,
+  Widget _bottonRegistro() {
+      return StreamBuilder(
+        builder: (BuildContext context, AsyncSnapshot snapshot){
+          return RaisedButton(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 15.0),
+              child: const Text('Registrarse',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10)
           ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10)
-        ),
-        elevation: 10.0,
-        color: Color.fromARGB(255, 74, 135, 226),
-        onPressed: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RegistroScreen(),));
+          elevation: 10.0,
+          color: Color.fromARGB(255, 74, 135, 226),
+          onPressed: (){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RegistroScreen(),));
+          }
+        );
         }
       );
-      }
-    );
-  }
+    }
+
+
+}
+

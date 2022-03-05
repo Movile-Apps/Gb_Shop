@@ -21,10 +21,9 @@ class _GbShopState extends State<GbShop>{
 
   final screens = [
     const HomeScreen(),
-    const LoginScreen(),
-    const RegistroScreen(),
     const ReporteScreen(),
     const ConsPOIScreen(),
+    const MapScreen(),
     const AboutScreen()
 
   ];
@@ -33,10 +32,9 @@ class _GbShopState extends State<GbShop>{
   Widget build(BuildContext context) {
     final items = <Widget>[
       const Icon(Icons.home, size: 30,),
-      const Icon(Icons.person, size: 30,),
-      const Icon(Icons.person_search, size: 30,),
       const Icon(Icons.book, size: 30,),
       const Icon(Icons.point_of_sale, size: 30,),
+      const Icon(Icons.map, size: 30,),
       const Icon(Icons.info, size: 30,),
     ];
 
