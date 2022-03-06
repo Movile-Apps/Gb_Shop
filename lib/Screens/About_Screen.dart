@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gb_shop/Screens/Screens.dart';
 
  class AboutScreen extends StatelessWidget{
 
@@ -9,6 +10,14 @@ import 'package:flutter/material.dart';
       return  Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.greenAccent,
+          actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.person),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
+            },
+          ),
+        ],
           title: const Text('Sobre nosotros'),
           elevation: 0,
           centerTitle: true,

@@ -13,7 +13,7 @@ import 'package:gb_shop/Screens/screens.dart';
           backgroundColor: Colors.greenAccent,
           actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.person),
+            icon: const Icon(Icons.person_rounded),
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
             },
@@ -32,6 +32,8 @@ import 'package:gb_shop/Screens/screens.dart';
                 _crearCardPrincipal(),
               ],
          )
+
+         
         )
       ),
      );
@@ -40,15 +42,15 @@ import 'package:gb_shop/Screens/screens.dart';
     Widget _crearCardPrincipal() {
 
    return Card(
-     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
 
-     child: Container(
-       child: Column(
-        children: <Widget>[
-            Image.asset('assets/Portada.png')
-         ]
-       ),
-     )
-   );
- }
+      child: Container(
+        child: Column(
+         children: <Widget>[
+             Image.asset('assets/Portada.png')
+          ]
+        ),
+      )
+    );
+  }
  }
