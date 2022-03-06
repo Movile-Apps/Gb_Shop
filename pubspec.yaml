@@ -30,6 +30,8 @@ dependencies:
   image_picker:
   flutter:
     sdk: flutter
+#https://pub.dev/packages/google_maps_flutter
+  google_maps_flutter: ^2.1.2
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -37,6 +39,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_svg: ^1.0.3
   curved_navigation_bar: ^1.0.3
+  
   
 
 dev_dependencies:
