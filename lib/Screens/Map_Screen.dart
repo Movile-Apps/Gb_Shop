@@ -1,5 +1,4 @@
 import 'dart:ffi';
-/*Logre agregar el maps 06/03/2020. RF.*/
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Screens/screens.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';

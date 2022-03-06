@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Screens/screens.dart';
 
@@ -22,6 +23,32 @@ import 'package:gb_shop/Screens/screens.dart';
           elevation: 0,
           centerTitle: true,
         ),
-      );
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Center(
+            child: Column(
+              children: <Widget>[
+
+                _crearCardPrincipal(),
+              ],
+         )
+        )
+      ),
+     );
     }
+
+    Widget _crearCardPrincipal() {
+
+   return Card(
+     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+
+     child: Container(
+       child: Column(
+        children: <Widget>[
+            Image.asset('assets/Portada.png')
+         ]
+       ),
+     )
+   );
+ }
  }
