@@ -30,7 +30,6 @@ import 'package:gb_shop/Screens/Screens.dart';
               Flexible(
                 child: Image.asset('assets/LogReporte.png',
                 height: 300.0,
-              
                 ),
               ),
               
