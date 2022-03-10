@@ -30,6 +30,7 @@ import 'package:gb_shop/Screens/screens.dart';
               children: <Widget>[
 
                 _crearCardPrincipal(),
+                
               ],
          )
 
@@ -38,7 +39,7 @@ import 'package:gb_shop/Screens/screens.dart';
       ),
      );
     }
-
+/*Widgets*/
     Widget _crearCardPrincipal() {
 
    return Card(
@@ -46,11 +47,33 @@ import 'package:gb_shop/Screens/screens.dart';
 
       child: Container(
         child: Column(
-         children: <Widget>[
-             Image.asset('assets/Portada.png')
-          ]
-        ),
-      )
+        children: <Widget>[
+          Image.asset('assets/Portada.png', height: 170.0,),
+          Container(
+            padding: const EdgeInsets.all(10.0),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(7.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[     
+
+                FlatButton.icon(
+                  icon: const Icon(Icons.favorite, size: 18.0, color: Colors.redAccent),
+                  label: const Text('Conoce mas sobre nosotros.'),
+                  onPressed: () {
+                  
+                  },
+                ),
+              ],
+            )
+          )
+        ],
+      ),
+     )
     );
+
+    
   }
- }
+}
+/** */

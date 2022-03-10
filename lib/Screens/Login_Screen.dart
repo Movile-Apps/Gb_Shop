@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
       builder: (BuildContext context, AsyncSnapshot snapshot){
         return RaisedButton(
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+            padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 15.0),
             child: const Text('Iniciar Sesion',
               style: TextStyle(
                 fontSize: 16.0,
@@ -109,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
         elevation: 10.0,
         color: Colors.amber,
         onPressed: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomeScreen(),));
+          Navigator.pop(context);
         }
       );
       }
@@ -119,29 +119,16 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _bottonRegistro() {
       return StreamBuilder(
         builder: (BuildContext context, AsyncSnapshot snapshot){
-          return RaisedButton(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 15.0),
-              child: const Text('Registrarse',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+          return TextButton(
+            style: TextButton.styleFrom(
+              textStyle: const TextStyle(fontSize: 15),
             ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10)
-          ),
-          elevation: 10.0,
-          color: Color.fromARGB(255, 74, 135, 226),
           onPressed: (){
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RegistroScreen(),));
-          }
+          }, child: const Text('Registrarse'),
         );
         }
       );
     }
 
-
 }
-

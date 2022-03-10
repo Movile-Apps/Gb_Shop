@@ -32,11 +32,10 @@ class _RegistroScreenState extends State<RegistroScreen> {
               
                 ),
               ),
+                
               
               _userTextField(),
-              const SizedBox(height: 15,),
-              _confirmuserTextField(),
-              const SizedBox(height: 15,),           
+              const SizedBox(height: 15,),         
               _passwordTextField(),
               const SizedBox(height: 20.0,),
               _confirmpasswordTextField(),
@@ -44,16 +43,15 @@ class _RegistroScreenState extends State<RegistroScreen> {
               _nombreTextField(),
               const SizedBox(height: 20.0,),
               _apellidoTextField(),
-              const SizedBox(height: 20.0,),
-              _bottonImage(),          
+              const SizedBox(height: 20.0,),         
               _bottonRegistro(),
+
             ],
           )
 
         ),
       );
   }
-
   Widget _userTextField() {
     return StreamBuilder(
       builder: (BuildContext context, AsyncSnapshot snapshot){
@@ -75,26 +73,6 @@ class _RegistroScreenState extends State<RegistroScreen> {
     );
   }
 
-  Widget _confirmuserTextField() {
-    return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot){
-        return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: const TextField(
-
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-
-              icon: Icon(Icons.email),
-              hintText: 'Escribe el mismo correo',
-              labelText: 'Confirma tu correo'
-            ),
-
-          ),
-        );
-      }
-    );
-  }
 
   Widget _passwordTextField() {
 
@@ -180,8 +158,8 @@ Widget _bottonRegistro() {
       builder: (BuildContext context, AsyncSnapshot snapshot){
         return RaisedButton(
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-            child: const Text('Iniciar Sesion',
+            padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 15.0),
+            child: const Text('Crear cuenta',
               style: TextStyle(
                 fontSize: 16.0,
                 fontWeight: FontWeight.bold,
@@ -193,7 +171,7 @@ Widget _bottonRegistro() {
         ),
         elevation: 10.0,
         color: Colors.amber,
-        splashColor: Color.fromARGB(255, 99, 223, 245),
+        splashColor: const Color.fromARGB(255, 99, 223, 245),
         onPressed: (){
           Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
         }
@@ -201,36 +179,6 @@ Widget _bottonRegistro() {
       }
     );
   }
-
-Widget _bottonImage() {
-    return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot){
-        return RaisedButton(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-            child: const Text('Seleccionar foto',
-              style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10)
-        ),
-        elevation: 10.0,
-        color: Color.fromARGB(255, 148, 240, 163),
-        splashColor: Color.fromARGB(255, 245, 229, 85),
-        onPressed: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
-         }
-       );
-      }
-    );
-  }
-
-
-  
 
 }
 
