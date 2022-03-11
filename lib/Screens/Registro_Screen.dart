@@ -1,6 +1,6 @@
 // ignore_for_file: deprecated_member_use
 import 'package:flutter/material.dart';
-import 'package:gb_shop/Screens/LoginScreens.dart';
+import 'package:gb_shop/Widgets/custom_Input_form_field_widget.dart';
 
 class RegistroScreen extends StatefulWidget{
   static String id = 'RegistroScreen';
@@ -23,164 +23,31 @@ class _RegistroScreenState extends State<RegistroScreen> {
           elevation: 0,
           centerTitle: true,
         ),
-        body: ListView(
+        body: SingleChildScrollView(
+          child: Padding(
             
-            children: [
-              Flexible(
-                child: Image.asset('assets/Registro.png',
-                height: 300.0,
-              
-                ),
-              ),
-                
-              
-              _userTextField(),
-              const SizedBox(height: 15,),         
-              _passwordTextField(),
-              const SizedBox(height: 20.0,),
-              _confirmpasswordTextField(),
-              const SizedBox(height: 20.0,),
-              _nombreTextField(),
-              const SizedBox(height: 20.0,),
-              _apellidoTextField(),
-              const SizedBox(height: 20.0,),         
-              _bottonRegistro(),
-
-            ],
-          )
-
-        ),
-      );
-  }
-  Widget _userTextField() {
-    return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot){
-        return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: const TextField(
-
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-
-              icon: Icon(Icons.email),
-              hintText: 'ejemplo@gmail.com',
-              labelText: 'Correo Electronico'
-            ),
-
-          ),
-        );
-      }
-    );
-  }
-
-
-  Widget _passwordTextField() {
-
-    return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot){
-        return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: const TextField(
-            
-            keyboardType: TextInputType.visiblePassword,
-            decoration: InputDecoration(
-              icon: Icon(Icons.lock),
-              hintText: 'Contraseña nueva',
-              labelText: 'Contraseña'
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            child: Column(
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                Image.asset('assets/Registro.png', height: 200.0,),
+                const CustomInputFormFieldWidget(labelText: 'Email', hintText: 'ejemplo@gmail.com', icon: Icons.email,),
+                const CustomInputFormFieldWidget(labelText: 'Contraseña', hintText: 'Escribe una nueva contraseña',icon: Icons.lock),
+                const CustomInputFormFieldWidget(labelText: 'Confirma tu contraseña', hintText: 'Escribe la misma contraseña',icon: Icons.lock_sharp),
+                const CustomInputFormFieldWidget(labelText: 'Nombre', hintText: 'Escribe tu nombre o nombres',icon: Icons.person),
+                const CustomInputFormFieldWidget(labelText: 'Apellidos', hintText: 'Escribe tu apellido paterno y materno',icon: Icons.person),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("Crear cuenta"),
+                )
+              ],
             ),
           ),
-        );
-      }
-    );
-  }
-
-  Widget _confirmpasswordTextField() {
-
-    return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot){
-        return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: const TextField(
-            
-            keyboardType: TextInputType.visiblePassword,
-            decoration: InputDecoration(
-              icon: Icon(Icons.lock),
-              hintText: 'Escribe la misma contraseña',
-              labelText: 'Confirma tu contraseña'
-            ),
-          ),
-        );
-      }
-    );
-  }
-
-    Widget _nombreTextField() {
-      return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot){
-        return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: const TextField(
-            
-            keyboardType: TextInputType.name,
-            decoration: InputDecoration(
-              icon: Icon(Icons.person),
-              hintText: 'Nombre o nombres',
-              labelText: 'Nombre'
-            ),
-          ),
-        );
-      }
-    );
-  }
-
-  Widget _apellidoTextField() {
-      return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot){
-        return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: const TextField(
-            
-            keyboardType: TextInputType.name,
-            decoration: InputDecoration(
-              icon: Icon(Icons.person_add),
-              hintText: 'Apellido paterno y materno.',
-              labelText: 'Apellidos'
-            ),
-          ),
-        );
-      }
-    );
-  }
-
-
-Widget _bottonRegistro() {
-    return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot){
-        return RaisedButton(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 15.0),
-            child: const Text('Crear cuenta',
-              style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10)
-        ),
-        elevation: 10.0,
-        color: Colors.amber,
-        splashColor: const Color.fromARGB(255, 99, 223, 245),
-        onPressed: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
-        }
-      );
-      }
-    );
-  }
-
+        )
+    )
+  ); 
+ }  
 }
 
-  
-  
