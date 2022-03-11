@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Screens/Screens.dart';
+import 'package:gb_shop/Widgets/reporte_form_field_widged.dart';
 
  class ReporteScreen extends StatelessWidget{
 
@@ -7,6 +8,13 @@ import 'package:gb_shop/Screens/Screens.dart';
    
     @override
     Widget build(BuildContext context) {
+      final List<String> motivodenuncias = [
+        'Mucha basura',
+        'Insectos',
+        'Agua Estancada',
+        'Mosquitos',
+        'Animales en descomposicion'
+      ];
       return  SafeArea(
       child: 
       Scaffold(
@@ -24,128 +32,52 @@ import 'package:gb_shop/Screens/Screens.dart';
           elevation: 0,
           centerTitle: true,
         ),
-        body: ListView(
-            
-            children: [
-              Flexible(
-                child: Image.asset('assets/LogReporte.png',
-                height: 300.0,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            child: Column(
+              children: [
+                Image.asset('assets/LogReporte.png', height: 200.0,),
+                const ReporteFormFieldWidged(
+                  labelText: 'Descripcion del lugar', 
+                  hintText: 'Describe brevemente que encontraste.',
+                  helperText: 'Dinos que fue lo que viste',
+                  icon: Icons.tab_rounded
+                  ),
+                const ReporteFormFieldWidged(
+                  labelText: 'Coordenadas', 
+                  hintText: 'Lat/Long',
+                  helperText: 'Son dadas por el maps, tranquilo.',
+                  icon: Icons.maps_home_work
+                  ),
+                  DropdownButtonFormField(
+                    items: motivodenuncias
+                    .map((motivodenuncia) => 
+                    DropdownMenuItem(child: Text(motivodenuncia), value: motivodenuncia.toLowerCase()))
+                    .toList(),
+                onChanged: (value) {}),
+                ElevatedButton(
+                  onPressed: () {
+                  },
+                  child: const Text("Selecciona una imagen"),
                 ),
-              ),
-              
-              _desclugarTextField(),
-              const SizedBox(height: 20.0,),
-              _desTextField(),
-              const SizedBox(height: 15,),
-              _bottonImage(),          
-              _bottonCrear(),
-            ],
-          )
 
+                //Botion de crear cuenta
+                ElevatedButton(
+                  onPressed: () {
+                  },
+                  child: const Text("Crear reporte"),
+                ),
+              ]
+         ),
         ),
-      );
+      )
+    )
+   );
   }
-
-  Widget _desTextField() {
-    return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot){
-        return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: const TextField(
-
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-
-              icon: Icon(Icons.phone_callback),
-              hintText: 'Selecciona el motivo',
-              labelText: 'Motivo de denuncia.'
-            ),
-
-          ),
-        );
-      }
-    );
-  }
-
-  
-
-  Widget _desclugarTextField() {
-      return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot){
-        return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: const TextField(
-            
-            keyboardType: TextInputType.name,
-            decoration: InputDecoration(
-              icon: Icon(Icons.table_rows),
-              hintText: 'Cuentanos que problema tiene el lugar.',
-              labelText: 'Descripcion del lugar.'
-            ),
-          ),
-        );
-      }
-    );
-  }
-
-Widget _bottonImage() {
-    return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot){
-        return RaisedButton(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-            child: const Text('Seleccionar foto',
-              style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10)
-        ),
-        elevation: 10.0,
-        color: const Color.fromARGB(255, 148, 240, 163),
-        splashColor: const Color.fromARGB(255, 245, 229, 85),
-        onPressed: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
-         }
-       );
-      }
-    );
-  }
-
-  Widget _bottonCrear() {
-    return StreamBuilder(
-      builder: (BuildContext context, AsyncSnapshot snapshot){
-        return RaisedButton(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-            child: const Text('Crear reporte',
-              style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10)
-        ),
-        elevation: 10.0,
-        color: Colors.amber,
-        splashColor: const Color.fromARGB(255, 99, 223, 245),
-        onPressed: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
-        }
-      );
-      }
-    );
-  }
+ }
 
 
-  
-
-}
 
   
   

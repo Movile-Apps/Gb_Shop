@@ -21,7 +21,7 @@ class _GbShopState extends State<GbShop>{
 
   final screens = [
     const ConsPOIScreen(),
-    const ReporteScreen(),
+          ReporteScreen(),
     const HomeScreen(),
     const MapScreen(),
     const AboutScreen()
