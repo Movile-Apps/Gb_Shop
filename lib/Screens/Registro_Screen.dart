@@ -1,10 +1,12 @@
 // ignore_for_file: deprecated_member_use
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Widgets/custom_Input_form_field_widget.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+
 
 class RegistroScreen extends StatefulWidget{
   static String id = 'RegistroScreen';
-
   const RegistroScreen({Key? key}) : super(key: key);
 
   @override 
@@ -12,6 +14,34 @@ class RegistroScreen extends StatefulWidget{
 }
 
 class _RegistroScreenState extends State<RegistroScreen> {
+
+  var imagen;
+  final picker = ImagePicker();
+
+  Future selImagen(op) async{
+
+    var pickedFile;
+
+    if(op == 1){
+      pickedFile = await picker.getImage(source: ImageSource.camera);
+
+    }else{
+      pickedFile = await picker.getImage(source: ImageSource.gallery);
+    }
+
+    setState(() {
+      if(pickedFile !=null){
+        imagen = File(pickedFile.path);
+      }else{
+        // ignore: avoid_print
+        print('No elegiste ninguna foto');
+      }
+    });
+
+    Navigator.of(context).pop();
+
+  }
+
   opciones(context){
     showDialog(
       context: context,
@@ -24,7 +54,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
 
                 InkWell(
                   onTap: (){
-
+                    selImagen(1);
                   },
                   child: Container(
                     padding: const EdgeInsets.all(20),
@@ -44,7 +74,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
                 ),
                 InkWell(
                   onTap: (){
-
+                    selImagen(1);
                   },
                   child: Container(
                     padding: const EdgeInsets.all(20),
@@ -127,7 +157,8 @@ class _RegistroScreenState extends State<RegistroScreen> {
                     Navigator.pop(context);
                   },
                   child: const Text("Crear cuenta"),
-                )
+                ),
+                imagen == null ? const Center() : Image.file(imagen)
               ],
             ),
           ),
