@@ -38,6 +38,14 @@ class _RegistroScreenState extends State<RegistroScreen> {
                 const CustomInputFormFieldWidget(labelText: 'Apellidos', hintText: 'Escribe tu apellido paterno y materno',icon: Icons.person),
                 ElevatedButton(
                   onPressed: () {
+                   
+                  },
+                  child: const Text("Selecciona una imagen"),
+                ),
+
+                //Botion de crear cuenta
+                ElevatedButton(
+                  onPressed: () {
                     Navigator.pop(context);
                   },
                   child: const Text("Crear cuenta"),
