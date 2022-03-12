@@ -28,13 +28,67 @@ import 'package:gb_shop/Screens/screens.dart';
           child: Center(
             child: Column(
               children: <Widget>[
-
                 _crearCardPrincipal(),
-                
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.amber
+                      ),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 10.0),
+                          child: const Text('Crear reporte',
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                              
+                            ),
+                          ),
+                        ),
+                      onPressed: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ReporteScreen(),));
+                      }
+                    ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                        primary: Colors.amber
+                      ),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 10.0),
+                          child: const Text('Consultar POIs',
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      onPressed: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ConsPOIScreen(),));
+                      }
+                    ),
               ],
-         )
+            ),
 
-         
+            SizedBox(
+                height: 230,
+                child: Card(
+                  clipBehavior: Clip.antiAlias,
+                  child: InkWell(
+                    child: Image.asset('assets/gif/map.gif',fit: BoxFit.cover,),
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute( builder: (context) => const MapScreen()));
+                  },
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  elevation: 5,
+                  margin: const EdgeInsets.all(10),
+                ),
+              ),
+          ],
+         )
         )
       ),
      );
@@ -56,16 +110,7 @@ import 'package:gb_shop/Screens/screens.dart';
             padding: const EdgeInsets.all(7.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[     
-
-                FlatButton.icon(
-                  icon: const Icon(Icons.favorite, size: 18.0, color: Colors.redAccent),
-                  label: const Text('Conoce mas sobre nosotros.'),
-                  onPressed: () {
-                  
-                  },
-                ),
-              ],
+              
             )
           )
         ],
@@ -76,4 +121,3 @@ import 'package:gb_shop/Screens/screens.dart';
     
   }
 }
-/** */

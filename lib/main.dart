@@ -17,11 +17,9 @@ class GbShop extends StatefulWidget{
 
 class _GbShopState extends State<GbShop>{
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
-  int index = 2;
+  int index = 0;
 
   final screens = [
-    const ConsPOIScreen(),
-          ReporteScreen(),
     const HomeScreen(),
     const MapScreen(),
     const AboutScreen()
@@ -31,8 +29,6 @@ class _GbShopState extends State<GbShop>{
   @override
   Widget build(BuildContext context) {
     final items = <Widget>[
-      const Icon(Icons.table_view, size: 30,),
-      const Icon(Icons.report, size: 30,),
       const Icon(Icons.home, size: 30,),
       const Icon(Icons.map, size: 30,),
       const Icon(Icons.info, size: 30,),

@@ -50,19 +50,23 @@ import 'package:gb_shop/Widgets/reporte_form_field_widged.dart';
                   helperText: 'Son dadas por el maps, tranquilo.',
                   icon: Icons.maps_home_work
                   ),
+
                   DropdownButtonFormField(
+                    hint: const Text('Selecciona una etiqueta'),
+                    icon: const Icon(Icons.card_membership),
                     items: motivodenuncias
                     .map((motivodenuncia) => 
                     DropdownMenuItem(child: Text(motivodenuncia), value: motivodenuncia.toLowerCase()))
                     .toList(),
                 onChanged: (value) {}),
+
                 ElevatedButton(
                   onPressed: () {
                   },
                   child: const Text("Selecciona una imagen"),
                 ),
 
-                //Botion de crear cuenta
+                //Boton de crear cuenta
                 ElevatedButton(
                   onPressed: () {
                   },

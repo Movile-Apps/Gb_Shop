@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 import 'package:flutter/material.dart';
+import 'package:gb_shop/Screens/Screens.dart';
 import 'package:gb_shop/Widgets/custom_Input_form_field_widget.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -84,7 +85,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
                         const Expanded(child: Text('Seleccionar una foto', style: TextStyle(fontSize: 16),
                          )
                         ),
-                        const Icon(Icons.picture_in_picture, color: Color.fromARGB(255, 106, 223, 145))
+                        const Icon(Icons.image, color: Color.fromARGB(255, 106, 223, 145))
                       ],
                     ),
                   ),
@@ -145,6 +146,9 @@ class _RegistroScreenState extends State<RegistroScreen> {
                 const CustomInputFormFieldWidget(labelText: 'Nombre', hintText: 'Escribe tu nombre o nombres',icon: Icons.person),
                 const CustomInputFormFieldWidget(labelText: 'Apellidos', hintText: 'Escribe tu apellido paterno y materno',icon: Icons.person),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                        primary: Colors.amber
+                      ),
                   onPressed: () {
                     opciones(context);
                   },
@@ -152,11 +156,45 @@ class _RegistroScreenState extends State<RegistroScreen> {
                 ),
 
                 //Botion de crear cuenta
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: const Color.fromARGB(255, 20, 252, 51)
+                      ),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                          child: const Text('Crear cuenta',
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                              
+                            ),
+                          ),
+                        ),
+                      onPressed: (){
+                        Navigator.of(context).pop();
+                      }
+                    ),
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text("Crear cuenta"),
+                  style: ElevatedButton.styleFrom(
+                        primary: const Color.fromARGB(255, 236, 23, 23)
+                      ),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
+                          child: const Text('Cancelar',
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      onPressed: (){
+                        Navigator.of(context).pop();
+                      }
+                    ),
+              ],
                 ),
                 imagen == null ? const Center() : Image.file(imagen)
               ],
