@@ -1,6 +1,5 @@
 // ignore_for_file: deprecated_member_use
 import 'package:flutter/material.dart';
-import 'package:gb_shop/Screens/Screens.dart';
 import 'package:gb_shop/Widgets/custom_Input_form_field_widget.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -145,6 +144,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
                 const CustomInputFormFieldWidget(labelText: 'Confirma tu contraseña', hintText: 'Escribe la misma contraseña',icon: Icons.lock_sharp),
                 const CustomInputFormFieldWidget(labelText: 'Nombre', hintText: 'Escribe tu nombre o nombres',icon: Icons.person),
                 const CustomInputFormFieldWidget(labelText: 'Apellidos', hintText: 'Escribe tu apellido paterno y materno',icon: Icons.person),
+                //Boton para activar la camara
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                         primary: Colors.amber
