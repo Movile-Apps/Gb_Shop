@@ -21,7 +21,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
 
   Future selImagen(op) async{
 
-    var pickedFile;
+    PickedFile? pickedFile;
 
     if(op == 1){
       pickedFile = await picker.getImage(source: ImageSource.camera);
@@ -75,7 +75,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
                 ),
                 InkWell(
                   onTap: (){
-                    selImagen(1);
+                    selImagen(2);
                   },
                   child: Container(
                     padding: const EdgeInsets.all(20),

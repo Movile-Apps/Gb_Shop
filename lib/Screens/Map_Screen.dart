@@ -33,18 +33,6 @@ class _MapScreenState extends State<MapScreen> {
           ),
         ],
           title: const Text('Mapa'),
-          leading: IconButton(
-          icon: const Icon(Icons.home),
-          onPressed: () {
-            const CameraPosition cameraPosition = CameraPosition(
-              target: LatLng(20.937139505752537, -89.62288462184497),
-              zoom: 20.0,
-            );
-            _controller?.animateCamera(
-              CameraUpdate.newCameraPosition(cameraPosition),
-            );
-          },
-        ),
       ),
       body: GoogleMap(
         onMapCreated: (controller) {

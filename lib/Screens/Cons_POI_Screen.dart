@@ -22,19 +22,21 @@ import 'package:gb_shop/Screens/screens.dart';
           elevation: 0,
         centerTitle: true,
         ),
-        body: ListView(
-          scrollDirection: Axis.horizontal,
-          children: <Widget>[
-
-            
-              _crearCardPrincipal(),
-              _crearCardPrincipal(),
-              _crearCardPrincipal(),
-              _crearCardPrincipal(),
-              _crearCardPrincipal(),
-              _crearCardPrincipal(),
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: <Widget>[
+                  _crearCardPrincipal(),
+                  _crearCardPrincipal(),
+                  _crearCardPrincipal(),
+                  _crearCardPrincipal(),
+                  _crearCardPrincipal(),
+                  _crearCardPrincipal(),
+                  _crearCardPrincipal(),
             ]
         ),
+          )
+        )
       );
     }
 
@@ -43,10 +45,10 @@ import 'package:gb_shop/Screens/screens.dart';
    return Card(
       child: Column(
         children: <Widget>[
-          Image.asset('assets/Registro.png', height: 370.0),
+          Image.asset('assets/Garb.jpeg', height: 370.0, width: 400.0,),
           Container(
-            padding: const EdgeInsets.all(10.0),
-            child: const Text('Calle 111b x 52 y 52 A', softWrap: true,),
+            padding: const EdgeInsets.all(15.0),
+            child: const Text('Motivo: Animales en descomposicion, Calle 111b x 52 y 52 A', softWrap: true,),
           ),
           Padding(
             padding: const EdgeInsets.all(7.0),
@@ -54,14 +56,14 @@ import 'package:gb_shop/Screens/screens.dart';
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 TextButton.icon(
-                  icon: const Icon(Icons.done_all_rounded, size: 18.0, color: Color.fromARGB(255, 88, 255, 82)),
+                  icon: const Icon(Icons.done_all_rounded, size: 20.0, color: Color.fromARGB(255, 88, 255, 82)),
                   label: const Text('Confirmar'),
                   onPressed: () {
                    ('Confirmar');
                   },
                 ),
                 TextButton.icon(
-                  icon: const Icon(Icons.remove_circle, size: 18.0, color: Color.fromARGB(255, 240, 68, 68)),
+                  icon: const Icon(Icons.remove_circle, size: 20.0, color: Color.fromARGB(255, 240, 68, 68)),
                   label: const Text('Rechazar'),
                   onPressed: () {
                   ('Rechazar');

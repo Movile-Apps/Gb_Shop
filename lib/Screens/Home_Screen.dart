@@ -79,7 +79,9 @@ import 'package:gb_shop/Screens/screens.dart';
               
             ),
             Column(
-              
+              children: [
+                
+              ],
             ),
 
             SizedBox(
@@ -125,7 +127,5 @@ import 'package:gb_shop/Screens/screens.dart';
       ),
      )
     );
-
-    
   }
 }
