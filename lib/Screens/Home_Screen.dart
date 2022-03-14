@@ -18,6 +18,12 @@ import 'package:gb_shop/Screens/screens.dart';
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
             },
           ),
+          IconButton(
+            icon: const Icon(Icons.person),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PerfilScreen(),));
+            },
+          ),
         ],
           title: Image.asset('assets/TexLogo.png', width: 600, height: 800,),
           elevation: 0,
@@ -34,12 +40,13 @@ import 'package:gb_shop/Screens/screens.dart';
                   children: [
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.amber
+                        primary: Color.fromARGB(255, 235, 233, 225)
                       ),
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 10.0),
                           child: const Text('Crear reporte',
                             style: TextStyle(
+                              color: Colors.black,
                               fontSize: 16.0,
                               fontWeight: FontWeight.bold,
                               
@@ -52,12 +59,13 @@ import 'package:gb_shop/Screens/screens.dart';
                     ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                        primary: Colors.amber
+                        primary: Color.fromARGB(255, 235, 233, 225)
                       ),
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 10.0),
                           child: const Text('Consultar POIs',
                             style: TextStyle(
+                              color: Colors.black,
                               fontSize: 16.0,
                               fontWeight: FontWeight.bold,
                             ),
@@ -68,6 +76,10 @@ import 'package:gb_shop/Screens/screens.dart';
                       }
                     ),
               ],
+              
+            ),
+            Column(
+              
             ),
 
             SizedBox(
@@ -95,10 +107,8 @@ import 'package:gb_shop/Screens/screens.dart';
     }
 /*Widgets*/
     Widget _crearCardPrincipal() {
-
    return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-
       child: Container(
         child: Column(
         children: <Widget>[
@@ -109,8 +119,6 @@ import 'package:gb_shop/Screens/screens.dart';
           Padding(
             padding: const EdgeInsets.all(7.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              
             )
           )
         ],

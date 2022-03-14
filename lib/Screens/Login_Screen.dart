@@ -9,6 +9,7 @@ class LoginScreen extends StatefulWidget{
   const LoginScreen({Key? key}) : super(key: key);
 
   @override 
+  
   _LoginScreenState createState() => _LoginScreenState();
 }
 
@@ -18,7 +19,8 @@ class _LoginScreenState extends State<LoginScreen> {
     return SafeArea(
       child: 
       Scaffold(
-        appBar: AppBar(
+        appBar: AppBar( 
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.greenAccent,
           title: Image.asset('assets/TexLogo.png', width: 600, height: 800,),
           elevation: 0,
