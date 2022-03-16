@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Widgets/custom_Input_form_field_widget.dart';
 import 'package:image_picker/image_picker.dart';
@@ -23,10 +23,10 @@ class _RegistroScreenState extends State<RegistroScreen> {
     PickedFile? pickedFile;
 
     if(op == 1){
-      pickedFile = await picker.getImage(source: ImageSource.camera);
+      pickedFile = (await picker.pickImage(source: ImageSource.camera)) as PickedFile?;
 
     }else{
-      pickedFile = await picker.getImage(source: ImageSource.gallery);
+      pickedFile = (await picker.pickImage(source: ImageSource.gallery)) as PickedFile?;
     }
 
     setState(() {

@@ -18,12 +18,6 @@ import 'package:gb_shop/Screens/screens.dart';
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
             },
           ),
-          IconButton(
-            icon: const Icon(Icons.person),
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PerfilScreen(),));
-            },
-          ),
         ],
           title: Image.asset('assets/TexLogo.png', width: 600, height: 800,),
           elevation: 0,
