@@ -19,7 +19,7 @@ import 'package:gb_shop/Screens/screens.dart';
             },
           ),
         ],
-          title: Image.asset('assets/TexLogo.png', width: 600, height: 800,),
+          title: Image.asset('assets/Uso/TexLogo.png', width: 600, height: 800,),
           elevation: 0,
           centerTitle: true,
         ),
@@ -53,7 +53,7 @@ import 'package:gb_shop/Screens/screens.dart';
                     ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 235, 233, 225)
+                        primary: const Color.fromARGB(255, 235, 233, 225)
                       ),
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 10.0),
@@ -70,19 +70,15 @@ import 'package:gb_shop/Screens/screens.dart';
                       }
                     ),
               ],
-              
             ),
             Column(
               children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.amber),
-                  onPressed: () {
-                    
-                  },
-                  child: const Text("Calle 111b x 52 y 52a"),
-                ),
+                  _miPOI(),
+                  _miPOI(),
+                  _miPOI(),
               ],
             ),
+
             SizedBox(
                 height: 230,
                 child: Card(
@@ -113,7 +109,7 @@ import 'package:gb_shop/Screens/screens.dart';
       child: Container(
         child: Column(
         children: <Widget>[
-          Image.asset('assets/Portada.png', height: 170.0,),
+          Image.asset('assets/Uso/Portada.png', height: 170.0,),
           Container(
             padding: const EdgeInsets.all(10.0),
           ),
@@ -127,4 +123,44 @@ import 'package:gb_shop/Screens/screens.dart';
      )
     );
   }
+
+   Widget _miPOI() {
+  return Card(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    margin: const EdgeInsets.all(2),
+
+    elevation: 1,
+    child: Column(
+      children: <Widget>[
+        const ListTile(
+          contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+          title: Text('Punto de interés'),
+          subtitle: Text('Calle 111b x 52 y 52 A, Colonia Mercedes Barrera. Exceso de basura.'),leading: 
+          Icon(Icons.zoom_in_map, color: Color.fromARGB(255, 115, 209, 233) )),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            TextButton.icon(icon: const Icon(Icons.visibility, size: 20.0, color: Color.fromARGB(255, 123, 236, 221)),
+                  label: const Text('Visitar', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
+                  onPressed: () {
+                  
+                  },
+                ),
+            TextButton.icon(icon: const Icon(Icons.confirmation_num, size: 20.0, color: Color.fromARGB(255, 121, 241, 74)),
+                  label: const Text('Confirmar', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
+                  onPressed: () {
+                  ('Confirmación');},
+                ),
+
+            TextButton.icon(icon: const Icon(Icons.remove_circle, size: 20.0, color: Color.fromARGB(255, 240, 68, 68)),
+                  label: const Text('Rechazar', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
+                  onPressed: () {
+                  ('Rechazo');},
+                ),
+          ],
+        )
+      ],
+    ),
+  );
+}
 }

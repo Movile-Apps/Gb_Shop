@@ -149,7 +149,7 @@ class ReporteScreen extends StatefulWidget{
             },
           ),
         ],
-          title: Image.asset('assets/TexLogoRep.png', width: 200, height: 400,),
+          title: Image.asset('assets/Uso/TexLogoRep.png', width: 200, height: 400,),
           elevation: 0,
           centerTitle: true,
         ),
@@ -158,7 +158,7 @@ class ReporteScreen extends StatefulWidget{
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             child: Column(
               children: [
-                Image.asset('assets/LogReporte.png', height: 200.0,),
+                Image.asset('assets/Uso/LogReporte.png', height: 200.0,),
                 const ReporteFormFieldWidged(
                   labelText: 'Descripcion del lugar', 
                   hintText: 'Describe brevemente que encontraste.',

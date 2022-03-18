@@ -22,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
         appBar: AppBar( 
           automaticallyImplyLeading: false,
           backgroundColor: Colors.greenAccent,
-          title: Image.asset('assets/TexLogo.png', width: 600, height: 800,),
+          title: Image.asset('assets/Uso/TexLogo.png', width: 600, height: 800,),
           elevation: 0,
           centerTitle: true,
         ),
@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             child: Column(
               children: [
-                Image.asset('assets/LogIN.png', height: 200.0,),
+                Image.asset('assets/Uso/LogIN.png', height: 200.0,),
                 const loginFormField(labelText: 'Email', hintText: 'ejemplo@gmail.com', icon: Icons.email,),
                 const loginFormField(labelText: 'Contraseña', hintText: 'Escribe tu contraseña',icon: Icons.lock),
                 ElevatedButton(

@@ -127,7 +127,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
       Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.greenAccent,
-          title: Image.asset('assets/TexLogo.png', width: 600, height: 800,),
+          title: Image.asset('assets/Uso/TexLogo.png', width: 600, height: 800,),
           elevation: 0,
           centerTitle: true,
         ),
@@ -138,7 +138,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
             child: Column(
               // ignore: prefer_const_literals_to_create_immutables
               children: [
-                Image.asset('assets/Registro.png', height: 200.0,),
+                Image.asset('assets/Uso/Registro.png', height: 200.0,),
                 const CustomInputFormFieldWidget(labelText: 'Email', hintText: 'ejemplo@gmail.com', icon: Icons.email,),
                 const CustomInputFormFieldWidget(labelText: 'Contraseña', hintText: 'Escribe una nueva contraseña',icon: Icons.lock),
                 const CustomInputFormFieldWidget(labelText: 'Confirma tu contraseña', hintText: 'Escribe la misma contraseña',icon: Icons.lock_sharp),
