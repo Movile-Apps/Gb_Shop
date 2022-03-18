@@ -34,7 +34,7 @@ import 'package:gb_shop/Screens/screens.dart';
                   children: [
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 235, 233, 225)
+                        primary: const Color.fromARGB(255, 235, 233, 225)
                       ),
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 10.0),
@@ -74,10 +74,15 @@ import 'package:gb_shop/Screens/screens.dart';
             ),
             Column(
               children: [
-                
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: Colors.amber),
+                  onPressed: () {
+                    
+                  },
+                  child: const Text("Calle 111b x 52 y 52a"),
+                ),
               ],
             ),
-
             SizedBox(
                 height: 230,
                 child: Card(
