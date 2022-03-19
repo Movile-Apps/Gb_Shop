@@ -36,13 +36,12 @@ import 'package:gb_shop/Screens/screens.dart';
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Padding(padding: EdgeInsets.all(8.0)),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: const Color.fromARGB(255, 235, 233, 225)
                       ),
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 10.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
                           child: const Text('Crear reporte',
                             style: TextStyle(
                               color: Colors.black,
@@ -61,7 +60,7 @@ import 'package:gb_shop/Screens/screens.dart';
                         primary: const Color.fromARGB(255, 235, 233, 225)
                       ),
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 10.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
                           child: const Text('Consultar POIs',
                             style: TextStyle(
                               color: Colors.black,

@@ -1,0 +1,1 @@
+export 'package:gb_shop/providers/reporte_provider.dart';
