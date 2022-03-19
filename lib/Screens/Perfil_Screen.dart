@@ -29,13 +29,6 @@ class PerfilScreen extends StatelessWidget {
                 _perfilimage(),
                 Column(
                   children: [
-
-
-
-
-
-
-
                     ElevatedButton(
                   style: ElevatedButton.styleFrom(
                         primary: const Color.fromARGB(255, 236, 23, 23)

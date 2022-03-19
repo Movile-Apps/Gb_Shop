@@ -29,12 +29,6 @@ class loginFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-
-    validator: (value) {
-       if (value == null || value.isEmpty) {
-         return 'Por favor ingrese los datos solicitados.';
-       }
-       return null;},
            
       initialValue: value,
       maxLength: maxLength,

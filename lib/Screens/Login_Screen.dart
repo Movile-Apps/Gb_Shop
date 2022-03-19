@@ -27,6 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
           centerTitle: true,
         ),
         body: SingleChildScrollView(
+          
           child: Padding(
             
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -42,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: const Text("Iniciar sesion"),
+                  child: const Text("Iniciar sesión"),
                 ),
                 TextButton(
                   onPressed: (){

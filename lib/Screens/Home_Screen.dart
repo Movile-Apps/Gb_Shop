@@ -8,6 +8,10 @@ import 'package:gb_shop/Screens/screens.dart';
    
     @override
     Widget build(BuildContext context) {
+      final List<String> motivodenuncias = [
+        'Puntos de interés',
+        'Eventos de limpieza'
+      ];
       return  Scaffold(
           appBar: AppBar(
           backgroundColor: Colors.greenAccent,
@@ -32,6 +36,7 @@ import 'package:gb_shop/Screens/screens.dart';
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    const Padding(padding: EdgeInsets.all(8.0)),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: const Color.fromARGB(255, 235, 233, 225)
@@ -68,9 +73,18 @@ import 'package:gb_shop/Screens/screens.dart';
                       onPressed: (){
                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ConsPOIScreen(),));
                       }
-                    ),
+                ),
               ],
             ),
+                //Botón de elección
+                DropdownButtonFormField(
+                    hint: const Text('Selecciona una opción'),
+                    icon: const Icon(Icons.card_membership),
+                    items: motivodenuncias
+                    .map((motivodenuncia) => 
+                    DropdownMenuItem(child: Text(motivodenuncia), value: motivodenuncia.toLowerCase()))
+                    .toList(), onChanged: (String? value) {  },),
+                    
             Column(
               children: [
                   _miPOI(),
@@ -86,22 +100,21 @@ import 'package:gb_shop/Screens/screens.dart';
                   child: InkWell(
                     child: Image.asset('assets/gif/map.gif',fit: BoxFit.cover,),
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute( builder: (context) => const MapScreen()));
-                  },
+                    Navigator.push(context, MaterialPageRoute( builder: (context) => const MapScreen()));},
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   elevation: 5,
                   margin: const EdgeInsets.all(10),
-                ),
               ),
+            ),
           ],
          )
         )
       ),
      );
-    }
+  }
 /*Widgets*/
     Widget _crearCardPrincipal() {
    return Card(
@@ -156,11 +169,11 @@ import 'package:gb_shop/Screens/screens.dart';
                   label: const Text('Rechazar', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
                   onPressed: () {
                   ('Rechazo');},
-                ),
-          ],
-        )
-      ],
-    ),
-  );
-}
+                  ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
 }
