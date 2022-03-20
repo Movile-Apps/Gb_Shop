@@ -14,12 +14,14 @@ import 'package:gb_shop/Screens/screens.dart';
       ];
       return  Scaffold(
           appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.greenAccent,
           actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.person_rounded),
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PerfilScreen(),));
+              //Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
             },
           ),
         ],
@@ -55,37 +57,60 @@ import 'package:gb_shop/Screens/screens.dart';
                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ReporteScreen(),));
                       }
                     ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                        primary: const Color.fromARGB(255, 235, 233, 225)
-                      ),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                          child: const Text('Consultar POIs',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.bold,
-                            ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                            primary: const Color.fromARGB(255, 235, 233, 225)
                           ),
-                        ),
-                      onPressed: (){
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ConsPOIScreen(),));
-                      }
-                ),
-              ],
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                              child: const Text('Consultar POIs',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          onPressed: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ConsPOIScreen(),));
+                          }
+                    ),
+              ],    
             ),
+                 /* Row( mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                  IconButton(
+                    icon: const Icon(Icons.info_outline, size: 30.0),
+                    color: const Color.fromARGB(255, 92, 221, 135),
+                    onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AboutScreen(),));},),
+
+                  IconButton(
+                    icon: const Icon(Icons.map_rounded, size: 30.0),
+                    color: const Color.fromARGB(255, 92, 221, 135),
+                    onPressed: () {},),
+
+                  IconButton(
+                    icon: const Icon(Icons.info_outline),
+                    color: const Color.fromARGB(255, 92, 221, 135),
+                    onPressed: () {},)
+                    ],
+                  ),*/
                 //Botón de elección
-                DropdownButtonFormField(
+               
+                    
+                    
+            Column(
+              children: [
+                 DropdownButtonFormField(
                     hint: const Text('Selecciona una opción'),
                     icon: const Icon(Icons.card_membership),
                     items: motivodenuncias
                     .map((motivodenuncia) => 
                     DropdownMenuItem(child: Text(motivodenuncia), value: motivodenuncia.toLowerCase()))
                     .toList(), onChanged: (String? value) {  },),
-                    
-            Column(
-              children: [
+                    Container(
+                      padding: const EdgeInsets.all(15.0),),
+
                   _miPOI(),
                   _miPOI(),
                   _miPOI(),
@@ -125,16 +150,12 @@ import 'package:gb_shop/Screens/screens.dart';
           Container(
             padding: const EdgeInsets.all(10.0),
           ),
-          Padding(
-            padding: const EdgeInsets.all(7.0),
-            child: Row(
-            )
-          )
         ],
       ),
      )
     );
   }
+  
 
    Widget _miPOI() {
   return Card(

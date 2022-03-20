@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         primary: Colors.amber
                       ),
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomeScreen(),));
                   },
                   child: const Text("Iniciar sesión"),
                 ),
