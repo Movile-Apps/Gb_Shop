@@ -1,6 +1,10 @@
 import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Screens/screens.dart';
+import 'package:gb_shop/providers/reporte_provider.dart';
+import 'package:provider/provider.dart';
+
+import '../Models/usuario.dart';
 
  class HomeScreen extends StatelessWidget{
 
@@ -8,6 +12,9 @@ import 'package:gb_shop/Screens/screens.dart';
    
     @override
     Widget build(BuildContext context) {
+      final userProvider = Provider.of<ReporteProvider>(context);
+      final List<Usuario> usuarios = userProvider.usuarios;
+
       final List<String> motivodenuncias = [
         'Puntos de interés',
         'Eventos de limpieza'
@@ -34,6 +41,10 @@ import 'package:gb_shop/Screens/screens.dart';
           child: Center(
             child: Column(
               children: <Widget>[
+                ...usuarios.map((usuario) => ListTile(
+                  title: Text('Nombre completo ${usuario.nombre} ${usuario.apellido}'),
+                  subtitle: Text('Correo ${usuario.correo}')
+                )),
                 _crearCardPrincipal(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -191,7 +202,8 @@ import 'package:gb_shop/Screens/screens.dart';
                   ('Rechazo');},
                   ),
             ],
-          )
+          ),
+
         ],
       ),
     );

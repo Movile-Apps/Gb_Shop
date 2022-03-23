@@ -6,7 +6,7 @@ import 'package:gb_shop/providers/providers.dart';
 import 'package:provider/provider.dart';
 
 
-void main() => runApp(const MaterialApp(debugShowCheckedModeBanner: false, home: GbShop()));
+void main() => runApp(const AppState());
 
 class MyHttpOverrides extends HttpOverrides {
 
@@ -28,7 +28,7 @@ class AppState extends StatelessWidget {
       ChangeNotifierProvider(
         create: (context) => ReporteProvider(), 
         lazy: false,)
-    ], child: const GbShop(),);
+    ], child: const MaterialApp(debugShowCheckedModeBanner: false, home: GbShop()),);
   }
 }
 

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Screens/screens.dart';
+import 'package:provider/provider.dart';
 
 class PerfilScreen extends StatelessWidget {
   const PerfilScreen({Key? key}) : super(key: key);
 
   @override
     Widget build(BuildContext context) {
+      // final ReporteProvider = Provider.of(context);
       return  Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.greenAccent,

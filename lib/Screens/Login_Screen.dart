@@ -41,6 +41,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         primary: Colors.amber
                       ),
                   onPressed: () {
+                    //cambiar el boton a push on pop o pop namet(no se si lo escribi bien)
+                    //usar colum divader en la card del login para mostrar el texto
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomeScreen(),));
                   },
                   child: const Text("Iniciar sesión"),
