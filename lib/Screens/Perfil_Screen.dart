@@ -64,7 +64,7 @@ class PerfilScreen extends StatelessWidget {
                     icon: const Icon(Icons.logout),
                     color: Color.fromARGB(255, 228, 62, 32),
                               onPressed: (){
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
+                                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const LoginScreen(),));
                               }
                     ),
 

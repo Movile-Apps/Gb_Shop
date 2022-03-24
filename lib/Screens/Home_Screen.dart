@@ -1,6 +1,7 @@
 import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Screens/screens.dart';
+import 'package:gb_shop/main.dart';
 import 'package:gb_shop/providers/reporte_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -87,29 +88,7 @@ import '../Models/usuario.dart';
                           }
                     ),
               ],    
-            ),
-                 /* Row( mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                  IconButton(
-                    icon: const Icon(Icons.info_outline, size: 30.0),
-                    color: const Color.fromARGB(255, 92, 221, 135),
-                    onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AboutScreen(),));},),
-
-                  IconButton(
-                    icon: const Icon(Icons.map_rounded, size: 30.0),
-                    color: const Color.fromARGB(255, 92, 221, 135),
-                    onPressed: () {},),
-
-                  IconButton(
-                    icon: const Icon(Icons.info_outline),
-                    color: const Color.fromARGB(255, 92, 221, 135),
-                    onPressed: () {},)
-                    ],
-                  ),*/
-                //Botón de elección
-               
-                    
-                    
+            ),     
             Column(
               children: [
                  DropdownButtonFormField(
@@ -135,7 +114,7 @@ import '../Models/usuario.dart';
                   child: InkWell(
                     child: Image.asset('assets/gif/map.gif',fit: BoxFit.cover,),
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute( builder: (context) => const MapScreen()));},
+                    Navigator.push(context, MaterialPageRoute( builder: (context) => const GbShop()));},
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),

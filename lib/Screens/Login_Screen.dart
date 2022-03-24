@@ -2,6 +2,7 @@ import 'package:gb_shop/Screens/LoginScreens.dart';
 import 'package:gb_shop/Widgets/login_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Screens/Screens.dart';
+import 'package:gb_shop/main.dart';
 
 class LoginScreen extends StatefulWidget{
   static String id = 'LoginScreen';
@@ -43,7 +44,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {
                     //cambiar el boton a push on pop o pop namet(no se si lo escribi bien)
                     //usar colum divader en la card del login para mostrar el texto
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomeScreen(),));
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const GbShop(),));
+               
                   },
                   child: const Text("Iniciar sesión"),
                 ),

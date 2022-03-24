@@ -33,20 +33,27 @@ class AppState extends StatelessWidget {
 }
 
 class GbShop extends StatefulWidget{
-  const GbShop({Key? key}) : super(key: key);
+  final int _defaultIndex;
+  const GbShop(this._defaultIndex, {Key? key}) : super(key: key);
 
   @override
-  State<GbShop> createState() => _GbShopState();
+  // ignore: |, no_logic_in_create_state
+  State<GbShop> createState() => _GbShopState(_defaultIndex);
+
 }
 
 
 class _GbShopState extends State<GbShop>{
+  final int _defaultIndex;
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
-  int index = 0;
+  int index = 1;
+
+  _GbShopState(this._defaultIndex);
+  
 
   final screens = [
-    const HomeScreen(),
     const MapScreen(),
+    const HomeScreen(),
     const AboutScreen()
 
   ];
@@ -54,8 +61,8 @@ class _GbShopState extends State<GbShop>{
   @override
   Widget build(BuildContext context) {
     final items = <Widget>[
-      const Icon(Icons.home, size: 30,),
       const Icon(Icons.map, size: 30,),
+      const Icon(Icons.home, size: 30,),
       const Icon(Icons.info, size: 30,),
     ];
 
@@ -63,7 +70,7 @@ class _GbShopState extends State<GbShop>{
     return Scaffold(
       backgroundColor: Colors.white,
       
-      body: screens[index],
+      body: screens[_defaultIndex != 0 ? _defaultIndex : index],
       bottomNavigationBar: Theme(data: Theme.of(context).copyWith(
         iconTheme: const IconThemeData(color: Colors.white)
         ),
