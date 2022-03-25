@@ -1,1 +1,1 @@
-export 'package:gb_shop/providers/reporte_provider.dart';
+export 'package:gb_shop/providers/users_provider.dart';

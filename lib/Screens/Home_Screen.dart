@@ -1,11 +1,11 @@
 import 'dart:ffi';
 import 'package:flutter/material.dart';
+//import 'package:flutter/rendering.dart';
 import 'package:gb_shop/Screens/screens.dart';
 import 'package:gb_shop/main.dart';
-import 'package:gb_shop/providers/reporte_provider.dart';
-import 'package:provider/provider.dart';
-
-import '../Models/usuario.dart';
+//import 'package:gb_shop/providers/users_provider.dart';
+//import 'package:provider/provider.dart';
+//import '../Models/usuario.dart';
 
  class HomeScreen extends StatelessWidget{
 
@@ -13,8 +13,8 @@ import '../Models/usuario.dart';
    
     @override
     Widget build(BuildContext context) {
-      final userProvider = Provider.of<ReporteProvider>(context);
-      final List<Usuario> usuarios = userProvider.usuarios;
+      //final userProvider = Provider.of<UsersProvider>(context);
+      //final List<Usuario> usuarios = userProvider.usuarios;
 
       final List<String> motivodenuncias = [
         'Puntos de interés',
@@ -42,10 +42,11 @@ import '../Models/usuario.dart';
           child: Center(
             child: Column(
               children: <Widget>[
-                ...usuarios.map((usuario) => ListTile(
-                  title: Text('Nombre completo ${usuario.nombre} ${usuario.apellido}'),
-                  subtitle: Text('Correo ${usuario.correo}')
-                )),
+               
+                 //Mockaroo              
+                //...usuarios.map((usuario) => ListTile(
+                 // title: Text('Nombre completo ${usuario.nombre} ${usuario.apellido}'),
+                  //subtitle: Text('Correo ${usuario.correo}'))),
                 _crearCardPrincipal(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

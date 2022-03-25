@@ -26,30 +26,25 @@ class AppState extends StatelessWidget {
     return MultiProvider( 
     providers: [
       ChangeNotifierProvider(
-        create: (context) => ReporteProvider(), 
+        create: (context) => UsersProvider(), 
         lazy: false,)
     ], child: const MaterialApp(debugShowCheckedModeBanner: false, home: GbShop()),);
   }
 }
 
 class GbShop extends StatefulWidget{
-  final int _defaultIndex;
-  const GbShop(this._defaultIndex, {Key? key}) : super(key: key);
+  const GbShop({Key? key}) : super(key: key);
 
   @override
   // ignore: |, no_logic_in_create_state
-  State<GbShop> createState() => _GbShopState(_defaultIndex);
+  State<GbShop> createState() => _GbShopState();
 
 }
 
 
 class _GbShopState extends State<GbShop>{
-  final int _defaultIndex;
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
   int index = 1;
-
-  _GbShopState(this._defaultIndex);
-  
 
   final screens = [
     const MapScreen(),
@@ -70,7 +65,7 @@ class _GbShopState extends State<GbShop>{
     return Scaffold(
       backgroundColor: Colors.white,
       
-      body: screens[_defaultIndex != 0 ? _defaultIndex : index],
+      body: screens[index],
       bottomNavigationBar: Theme(data: Theme.of(context).copyWith(
         iconTheme: const IconThemeData(color: Colors.white)
         ),
