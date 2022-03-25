@@ -1,20 +1,19 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:gb_shop/Models/usuario.dart';
+import 'package:gb_shop/Models/Reporte.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/retry.dart';
 
-class UsersProvider extends ChangeNotifier{
-  List<Usuario> usuarios = [];
+class ReporteProvider extends ChangeNotifier{
+  List<Reporte> reportes = [];
   final String _host ='my.api.mockaroo.com';
-  final Map<String, dynamic> _parameters = {'key':'1f68e690'};
-
-  UsersProvider(){
-    fetchUsuarios();
+  final Map<String, dynamic> _parameters = {'key':'960d9f80'};
+  ReporteProvider(){
+    fetchReportes();
   }
 
-  fetchUsuarios() async {
-    final String endPoint ='users.json';
+  fetchReportes() async {
+    const String endPoint ='reporte.json';
     final url = Uri.https(_host, endPoint, _parameters);
     final client = RetryClient(http.Client());
 
@@ -22,8 +21,8 @@ class UsersProvider extends ChangeNotifier{
       final response = await client.read(url);
       notifyListeners();
       print(response);
-      usuarios =
-         List<Usuario>.from(jsonDecode(response).map((x) => Usuario.fromJson(x)));
+      reportes =
+         List<Reporte>.from(json.decode(response).map((x) => Reporte.fromJson(x)));
     } finally {
       client.close();
      }

@@ -27,7 +27,12 @@ class AppState extends StatelessWidget {
     providers: [
       ChangeNotifierProvider(
         create: (context) => UsersProvider(), 
+        lazy: false,),
+
+        ChangeNotifierProvider(
+        create: (context) => ReporteProvider(), 
         lazy: false,)
+        
     ], child: const MaterialApp(debugShowCheckedModeBanner: false, home: GbShop()),);
   }
 }

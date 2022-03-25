@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gb_shop/Models/Reporte.dart';
 import 'package:gb_shop/Screens/screens.dart';
+import 'package:flutter/rendering.dart';
+import 'package:gb_shop/providers/reporte_providers.dart';
+import 'package:provider/provider.dart';
+import '../Models/Reporte.dart';
 
  class ConsPOIScreen extends StatelessWidget{
 
@@ -7,6 +12,10 @@ import 'package:gb_shop/Screens/screens.dart';
    
     @override
     Widget build(BuildContext context) {
+      //Lista
+      final reporteProvider = Provider.of<ReporteProvider>(context);
+      final List<Reporte> reporte = reporteProvider.reportes;
+
       return  Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.greenAccent,
@@ -14,7 +23,7 @@ import 'package:gb_shop/Screens/screens.dart';
           IconButton(
             icon: const Icon(Icons.person),
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PerfilScreen(),));
             },
           ),
         ],
@@ -26,12 +35,13 @@ import 'package:gb_shop/Screens/screens.dart';
           child: Center(
             child: Column(
               children: <Widget>[
-                  _miPOI(),
-                  _miPOI(),
-                  _miPOI(),
-                  _miPOI(),
-                  _miPOI(),
-                  _miPOI(),
+                  ...reporte
+                      .map((reporte) => ListTile(
+                            title: Text('Fecha: ${reporte.fecha}'),
+                            subtitle: Text('Problema ${reporte.descripcion}'),
+                            Text(''),
+                            leading: const Icon(Icons.garage),
+                            trailing: const Icon(Icons.arrow_drop_down)))
               ]
             ),
           )
