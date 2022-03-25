@@ -35,55 +35,67 @@ import '../Models/Reporte.dart';
           child: Center(
             child: Column(
               children: <Widget>[
+                _miPOI(),
                   ...reporte
-                      .map((reporte) => ListTile(
-                            title: Text('Fecha: ${reporte.fecha}'),
-                            subtitle: Text('Problema ${reporte.descripcion}'),
-                            Text(''),
-                            leading: const Icon(Icons.garage),
-                            trailing: const Icon(Icons.arrow_drop_down)))
-              ]
-            ),
-          )
-        )
-      );
-    }
+                      .map((reporte) => 
+                         Card(
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    margin: const EdgeInsets.all(15),
 
+                    elevation: 5,
+                    child: Column(
+                               children: <Widget>[
+                           ListTile(
+                            contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+                            title: Text('${reporte.idfoto}'),
+                            subtitle: Text('Problema ${reporte.descripcion} Fecha: ${reporte.fecha} Ubicación: ${reporte.idgeoubicacion} Etiqueta: ${reporte.idetiqueta}'),
+                            leading: Icon(Icons.zoom_in_map, color: Color.fromARGB(255, 115, 209, 233) )),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              TextButton.icon(icon: const Icon(Icons.visibility, size: 20.0, color: Color.fromARGB(255, 132, 236, 123)),
+                                    label: const Text('Visitar', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
+                                    onPressed: () {
+                                    ('Confirmación');},
+                                  ),
+                              TextButton.icon(icon: const Icon(Icons.confirmation_num, size: 20.0, color: Color.fromARGB(255, 121, 241, 74)),
+                                    label: const Text('Confirmar', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
+                                    onPressed: () {
+                                    ('Confirmación');},
+                                          ),
+
+                              TextButton.icon(icon: const Icon(Icons.remove_circle, size: 20.0, color: Color.fromARGB(255, 240, 68, 68)),
+                                    label: const Text('Rechazar', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
+                                    onPressed: () {
+                                    ('Rechazo');},
+                                  ),
+                            ],
+                          )
+                        ],
+                      ),
+                    )
+                  )
+            ]
+          ),
+        )
+      )
+    );
+  }
  Widget _miPOI() {
   return Card(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
     margin: const EdgeInsets.all(15),
 
-    elevation: 10,
+    elevation: 5,
     child: Column(
+      // ignore: prefer_const_literals_to_create_immutables
       children: <Widget>[
-        Image.asset('assets/Reporte/Garb.jpeg'),
+        Image.asset('assets/Uso/Info.png', height: 200, width: 200,),
         const ListTile(
           contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
-          title: Text('Punto de interés'),
-          subtitle: Text('Calle 111b x 52 y 52 A, Colonia Mercedes Barrera. Exceso de basura.'),leading: 
-          Icon(Icons.zoom_in_map, color: Color.fromARGB(255, 115, 209, 233) )),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            TextButton.icon(icon: const Icon(Icons.visibility, size: 20.0, color: Color.fromARGB(255, 132, 236, 123)),
-                  label: const Text('Visitar', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
-                  onPressed: () {
-                  ('Confirmación');},
-                ),
-            TextButton.icon(icon: const Icon(Icons.confirmation_num, size: 20.0, color: Color.fromARGB(255, 121, 241, 74)),
-                  label: const Text('Confirmar', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
-                  onPressed: () {
-                  ('Confirmación');},
-                ),
-
-            TextButton.icon(icon: const Icon(Icons.remove_circle, size: 20.0, color: Color.fromARGB(255, 240, 68, 68)),
-                  label: const Text('Rechazar', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
-                  onPressed: () {
-                  ('Rechazo');},
-                ),
-          ],
-        )
+          title: Text('¿Qué es un punto de interés?'),
+          subtitle: Text('Son reportes creados por otros usuarios.'),leading: 
+          Icon(Icons.info_outline_rounded, color: Color.fromARGB(255, 233, 218, 82) )),
       ],
     ),
   );

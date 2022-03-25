@@ -1,11 +1,10 @@
 import 'dart:ffi';
 import 'package:flutter/material.dart';
-//import 'package:flutter/rendering.dart';
 import 'package:gb_shop/Screens/screens.dart';
 import 'package:gb_shop/main.dart';
-//import 'package:gb_shop/providers/users_provider.dart';
-//import 'package:provider/provider.dart';
-//import '../Models/usuario.dart';
+import 'package:gb_shop/providers/reporte_providers.dart';
+import 'package:provider/provider.dart';
+import '../Models/Reporte.dart';
 
  class HomeScreen extends StatelessWidget{
 
@@ -13,8 +12,9 @@ import 'package:gb_shop/main.dart';
    
     @override
     Widget build(BuildContext context) {
-      //final userProvider = Provider.of<UsersProvider>(context);
-      //final List<Usuario> usuarios = userProvider.usuarios;
+      //Lista
+      final reporteProvider = Provider.of<ReporteProvider>(context);
+      final List<Reporte> reporte = reporteProvider.reportes;
 
       final List<String> motivodenuncias = [
         'Puntos de interés',
@@ -29,7 +29,6 @@ import 'package:gb_shop/main.dart';
             icon: const Icon(Icons.person_rounded),
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PerfilScreen(),));
-              //Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
             },
           ),
         ],
@@ -42,11 +41,6 @@ import 'package:gb_shop/main.dart';
           child: Center(
             child: Column(
               children: <Widget>[
-               
-                 //Mockaroo              
-                //...usuarios.map((usuario) => ListTile(
-                 // title: Text('Nombre completo ${usuario.nombre} ${usuario.apellido}'),
-                  //subtitle: Text('Correo ${usuario.correo}'))),
                 _crearCardPrincipal(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -100,11 +94,48 @@ import 'package:gb_shop/main.dart';
                     DropdownMenuItem(child: Text(motivodenuncia), value: motivodenuncia.toLowerCase()))
                     .toList(), onChanged: (String? value) {  },),
                     Container(
-                      padding: const EdgeInsets.all(15.0),),
-
-                  _miPOI(),
-                  _miPOI(),
-                  _miPOI(),
+                      padding: const EdgeInsets.all(5.0),),
+                      //
+                      ...reporte
+                      .map((reporte) => 
+                         Card(
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                            margin: const EdgeInsets.all(5)        ,
+        
+                            elevation: 5,
+                            child: Column(
+                                       children: <Widget>[
+                                   ListTile(
+                                    contentPadding: const EdgeInsets.fromLTRB(15, 10, 25, 0),
+                                    title: const Text('Punto de interés'),
+                                    subtitle: Text('Problema ${reporte.descripcion} Fecha: ${reporte.fecha} Ubicación: ${reporte.idgeoubicacion} Etiqueta: ${reporte.idetiqueta}'),
+                                    leading: const Icon(Icons.gpp_maybe_sharp, color: Color.fromARGB(255, 40, 199, 133) )),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: <Widget>[
+                                      TextButton.icon(icon: const Icon(Icons.visibility, size: 20.0, color: Color.fromARGB(255, 132, 236, 123)),
+                                            label: const Text('Visitar', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
+                                            onPressed: () {
+                                            ('Confirmación');},
+                                          ),
+                                      TextButton.icon(icon: const Icon(Icons.confirmation_num, size: 20.0, color: Color.fromARGB(255, 121, 241, 74)),
+                                            label: const Text('Confirmar', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
+                                            onPressed: () {
+                                            ('Confirmación');},
+                                                  )        ,
+        
+                                      TextButton.icon(icon: const Icon(Icons.remove_circle, size: 20.0, color: Color.fromARGB(255, 240, 68, 68)),
+                                            label: const Text('Rechazar', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
+                                            onPressed: () {
+                                            ('Rechazo');},
+                                          ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            )
+                          )
+                      //
               ],
             ),
 
@@ -147,45 +178,4 @@ import 'package:gb_shop/main.dart';
     );
   }
   
-
-   Widget _miPOI() {
-  return Card(
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-    margin: const EdgeInsets.all(2),
-
-    elevation: 1,
-    child: Column(
-      children: <Widget>[
-        const ListTile(
-          contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
-          title: Text('Punto de interés'),
-          subtitle: Text('Calle 111b x 52 y 52 A, Colonia Mercedes Barrera. Exceso de basura.'),leading: 
-          Icon(Icons.zoom_in_map, color: Color.fromARGB(255, 115, 209, 233) )),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            TextButton.icon(icon: const Icon(Icons.visibility, size: 20.0, color: Color.fromARGB(255, 123, 236, 221)),
-                  label: const Text('Visitar', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
-                  onPressed: () {
-                  
-                  },
-                ),
-            TextButton.icon(icon: const Icon(Icons.confirmation_num, size: 20.0, color: Color.fromARGB(255, 121, 241, 74)),
-                  label: const Text('Confirmar', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
-                  onPressed: () {
-                  ('Confirmación');},
-                ),
-
-            TextButton.icon(icon: const Icon(Icons.remove_circle, size: 20.0, color: Color.fromARGB(255, 240, 68, 68)),
-                  label: const Text('Rechazar', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
-                  onPressed: () {
-                  ('Rechazo');},
-                  ),
-            ],
-          ),
-
-        ],
-      ),
-    );
-  }
 }

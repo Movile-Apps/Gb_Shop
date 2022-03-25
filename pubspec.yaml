@@ -63,7 +63,6 @@ flutter:
   assets:
     - assets/
     - assets/Uso/
-    - assets/Reporte/
     - assets/Cards/
     - assets/gif/
 
