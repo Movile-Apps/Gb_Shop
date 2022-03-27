@@ -1,19 +1,18 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:gb_shop/Models/Etiqueta.dart';
+import 'package:gb_shop/Models/GeoUbi.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/retry.dart';
 
-class EtiquetaProvider extends ChangeNotifier{
-  List<Etiqueta> etiquetas = [];
+class GeoUbicacionProvider extends ChangeNotifier{
+  List<GeoUbicacion> geoUbicaciones = [];
   final String _host ='www.gbshopapi.somee.com';
-  //final Map<String, dynamic> _parameters = {'key':'960d9f80'};
-  EtiquetaProvider(){
-    fetchetiqueta();
+  GeoUbicacionProvider(){
+    fetchtGeoUbicacion();
   }
 
-  fetchetiqueta() async {
-    const String endPoint ='/api/Etiqueta';
+  fetchtGeoUbicacion() async {
+    const String endPoint ='/api/GeoUbicacion';
     final url = Uri.http(_host, endPoint);
     final client = RetryClient(http.Client());
 
@@ -21,8 +20,8 @@ class EtiquetaProvider extends ChangeNotifier{
       final response = await client.read(url);
       notifyListeners();
       print(response);
-      etiquetas =
-         List<Etiqueta>.from(json.decode(response).map((x) => Etiqueta()));
+      geoUbicaciones =
+         List<GeoUbicacion>.from(json.decode(response).map((x) => GeoUbicacion()));
     } finally {
       client.close();
      }

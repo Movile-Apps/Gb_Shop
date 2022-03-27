@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:gb_shop/Models/GeoUbi.dart';
 import 'package:gb_shop/Screens/screens.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:gb_shop/providers/GeoUbi_providers.dart';
 import 'package:gb_shop/providers/providers.dart';
 import 'package:provider/provider.dart';
 
@@ -26,6 +28,7 @@ class AppState extends StatelessWidget {
     HttpOverrides.global = MyHttpOverrides();
     return MultiProvider( 
     providers: [
+      
       ChangeNotifierProvider(
         create: (context) => UsersProvider(), 
         lazy: false,),
@@ -42,6 +45,17 @@ class AppState extends StatelessWidget {
         create: (context) => PatrocinadorProvider(), 
         lazy: false,),
 
+        ChangeNotifierProvider(
+        create: (context) => GeoUbicacionProvider(), 
+        lazy: false,),
+
+        ChangeNotifierProvider(
+        create: (context) => EtiquetaProvider(), 
+        lazy: false,),
+
+        ChangeNotifierProvider(
+        create: (context) => FotoProvider(), 
+        lazy: false,),
 
 
     ], child: const MaterialApp(debugShowCheckedModeBanner: false, home: GbShop()),);

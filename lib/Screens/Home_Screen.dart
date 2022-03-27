@@ -1,9 +1,11 @@
 import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Models/Evento.dart';
+import 'package:gb_shop/Models/GeoUbi.dart';
 import 'package:gb_shop/Models/Reporte.dart';
 import 'package:gb_shop/Screens/screens.dart';
 import 'package:gb_shop/main.dart';
+import 'package:gb_shop/providers/GeoUbi_providers.dart';
 import 'package:gb_shop/providers/providers.dart';
 import 'package:provider/provider.dart';
 import '../Models/Evento.dart';
@@ -20,6 +22,9 @@ import '../Models/Evento.dart';
 
       final reporteProvider = Provider.of<ReporteProvider>(context);
       final List<Reporte> reporte = reporteProvider.reportes;
+
+      final geoUbiProvider = Provider.of<GeoUbicacionProvider>(context);
+      final List<GeoUbicacion> geoubi = geoUbiProvider.geoUbicaciones;
 
       final List<String> motivodenuncias = [
         'Puntos de interés',
@@ -113,7 +118,7 @@ import '../Models/Evento.dart';
                                    ListTile(
                                     contentPadding: const EdgeInsets.fromLTRB(15, 10, 25, 0),
                                     title: const Text('Evento'),
-                                    subtitle: Text('Problema: ${evento.descripcion} Fecha: ${evento.fecha} Ubicación: ${evento.geoubicacionRequest} Personas requeridas: ${evento.personasRequeridas}'),
+                                    subtitle: Text('Problema: ${evento.descripcion} Fecha: ${evento.fecha} Ubicación: ${evento.geoubicacionRequest?.latitud}, ${evento.geoubicacionRequest?.longitud} Personas requeridas: ${evento.personasRequeridas}'),
                                     leading: const Icon(Icons.gpp_maybe_sharp, color: Color.fromARGB(255, 40, 199, 133) )),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
