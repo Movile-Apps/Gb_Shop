@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/retry.dart';
 
 class EtiquetaProvider extends ChangeNotifier{
-  List<Etiqueta> etiquetas = [];
+  Response request = new Response();
   final String _host ='www.gbshopapi.somee.com';
   //final Map<String, dynamic> _parameters = {'key':'960d9f80'};
   EtiquetaProvider(){
@@ -21,8 +21,7 @@ class EtiquetaProvider extends ChangeNotifier{
       final response = await client.read(url);
       notifyListeners();
       print(response);
-      etiquetas =
-         List<Etiqueta>.from(json.decode(response).map((x) => Etiqueta()));
+      request = responseFromJson(response);
     } finally {
       client.close();
      }

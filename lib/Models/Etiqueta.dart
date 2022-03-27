@@ -1,39 +1,39 @@
 // To parse this JSON data, do
 //
-//     final welcome = welcomeFromJson(jsonString);
+//     final response = responseFromJson(jsonString);
 
 import 'dart:convert';
 
-Etiqueta etiquetaFromJson(String str) => Etiqueta.fromJson(json.decode(str));
+Response responseFromJson(String str) => Response.fromJson(json.decode(str));
 
-String etiquetaToJson(Etiqueta data) => json.encode(data.toJson());
+String responseToJson(Response data) => json.encode(data.toJson());
 
-class Etiqueta {
-    Etiqueta({
+class Response {
+    Response({
         this.exito,
         this.mensaje,
         this.data,
     });
 
     int? exito;
-    dynamic mensaje;
-    List<Datum>? data;
+    String? mensaje;
+    List<Etiqueta>? data;
 
-    factory Etiqueta.fromJson(Map<String, dynamic> json) => Etiqueta(
+    factory Response.fromJson(Map<String, dynamic> json) => Response(
         exito: json["exito"],
         mensaje: json["mensaje"],
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        data: List<Etiqueta>.from(json["data"].map((x) => Etiqueta.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
         "exito": exito,
         "mensaje": mensaje,
-        "data": List<dynamic>.from(data!.map((x) => x.toJson())),
+        //"data": List<dynamic>.from(data.map((x) => x.toJson())),
     };
 }
 
-class Datum {
-    Datum({
+class Etiqueta {
+    Etiqueta({
         this.idEtiqueta,
         this.idFoto,
         this.nombre,
@@ -47,7 +47,7 @@ class Datum {
     String? descripcion;
     FotoRequest? fotoRequest;
 
-    factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+    factory Etiqueta.fromJson(Map<String, dynamic> json) => Etiqueta(
         idEtiqueta: json["idEtiqueta"],
         idFoto: json["idFoto"],
         nombre: json["nombre"],
@@ -60,7 +60,7 @@ class Datum {
         "idFoto": idFoto,
         "nombre": nombre,
         "descripcion": descripcion,
-        "fotoRequest": fotoRequest!.toJson(),
+        "fotoRequest": fotoRequest?.toJson(),
     };
 }
 

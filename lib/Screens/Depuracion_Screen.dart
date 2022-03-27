@@ -12,7 +12,7 @@ class DepuracionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
         final etiquetaProvider = Provider.of<EtiquetaProvider>(context);
-          final List<Etiqueta> etiqueta = etiquetaProvider.etiquetas;
+          final Response etiqueta = etiquetaProvider.request;
 
     return MaterialApp(
       title: 'Pruebas',
@@ -26,12 +26,11 @@ class DepuracionScreen extends StatelessWidget {
               scrollDirection: 
               Axis.vertical, physics: const BouncingScrollPhysics(),
               children: [
-                ...etiqueta
-                  .map((etiqueta) => ListTile(
-                    title: Text('Estado: ${etiqueta.exito}'),
-                    subtitle: Text('Mensaje: ${etiqueta.mensaje}'),
-                  ))
-                  .toList()
+                    Text('Estado: ${etiqueta.exito}'),
+                    Text('Mensaje: ${etiqueta.mensaje}'),
+                    ...?etiqueta.data?.map((etiqueta) => ListTile(
+                     title: Text('Etiqueta: ${etiqueta.nombre}')
+                    ))
               ],)),)
      ),
     );
