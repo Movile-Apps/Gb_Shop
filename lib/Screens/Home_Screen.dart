@@ -1,10 +1,11 @@
 import 'dart:ffi';
 import 'package:flutter/material.dart';
+import 'package:gb_shop/Models/Evento.dart';
 import 'package:gb_shop/Screens/screens.dart';
 import 'package:gb_shop/main.dart';
-import 'package:gb_shop/providers/reporte_providers.dart';
+import 'package:gb_shop/providers/Evento_providers.dart';
 import 'package:provider/provider.dart';
-import '../Models/Reporte.dart';
+import '../Models/Evento.dart';
 
  class HomeScreen extends StatelessWidget{
 
@@ -13,8 +14,8 @@ import '../Models/Reporte.dart';
     @override
     Widget build(BuildContext context) {
       //Lista
-      final reporteProvider = Provider.of<ReporteProvider>(context);
-      final List<Reporte> reporte = reporteProvider.reportes;
+      final eventoProvider = Provider.of<EventoProvider>(context);
+      final List<Evento> evento = eventoProvider.eventos;
 
       final List<String> motivodenuncias = [
         'Puntos de interés',
@@ -96,8 +97,8 @@ import '../Models/Reporte.dart';
                     Container(
                       padding: const EdgeInsets.all(5.0),),
                       //
-                      ...reporte
-                      .map((reporte) => 
+                      ...evento
+                      .map((evento) => 
                          Card(
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                             margin: const EdgeInsets.all(5)        ,
@@ -108,7 +109,7 @@ import '../Models/Reporte.dart';
                                    ListTile(
                                     contentPadding: const EdgeInsets.fromLTRB(15, 10, 25, 0),
                                     title: const Text('Punto de interés'),
-                                    subtitle: Text('Problema ${reporte.descripcion} Fecha: ${reporte.fecha} Ubicación: ${reporte.idgeoubicacion} Etiqueta: ${reporte.idetiqueta}'),
+                                    subtitle: Text('Problema: ${evento.descripcion} Fecha: ${evento.fecha} Ubicación: ${evento.geoubicacionRequest} Personas requeridas: ${evento.personasRequeridas}'),
                                     leading: const Icon(Icons.gpp_maybe_sharp, color: Color.fromARGB(255, 40, 199, 133) )),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.end,

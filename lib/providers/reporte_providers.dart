@@ -11,7 +11,7 @@ class ReporteProvider extends ChangeNotifier{
   ReporteProvider(){
     fetchReportes();
   }
-
+//https://my.api.mockaroo.com/reporte.json?key=960d9f80
   fetchReportes() async {
     const String endPoint ='reporte.json';
     final url = Uri.https(_host, endPoint, _parameters);
