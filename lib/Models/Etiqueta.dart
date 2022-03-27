@@ -1,5 +1,17 @@
 class Etiqueta {
     Etiqueta({
+        this.exito,
+        this.mensaje,
+        this.data,
+    });
+
+    int? exito;
+    dynamic mensaje;
+    List<Datum>? data;
+}
+
+class Datum {
+    Datum({
         this.idEtiqueta,
         this.idFoto,
         this.nombre,

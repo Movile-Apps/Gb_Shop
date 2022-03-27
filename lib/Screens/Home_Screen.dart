@@ -1,10 +1,10 @@
 import 'dart:ffi';
+import 'package:gb_shop/Screens/screens.dart';
+import 'package:gb_shop/main.dart';
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Models/Evento.dart';
 import 'package:gb_shop/Models/GeoUbi.dart';
 import 'package:gb_shop/Models/Reporte.dart';
-import 'package:gb_shop/Screens/screens.dart';
-import 'package:gb_shop/main.dart';
 import 'package:gb_shop/providers/GeoUbi_providers.dart';
 import 'package:gb_shop/providers/providers.dart';
 import 'package:provider/provider.dart';
@@ -39,6 +39,13 @@ import '../Models/Evento.dart';
             icon: const Icon(Icons.person_rounded),
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PerfilScreen(),));
+            },
+          ),
+          //Pruebas
+          IconButton(
+            icon: const Icon(Icons.extension_sharp),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const DepuracionScreen(),));
             },
           ),
         ],
