@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:gb_shop/Models/GeoUbi.dart';
 import 'package:gb_shop/Screens/screens.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:gb_shop/providers/GeoUbi_providers.dart';

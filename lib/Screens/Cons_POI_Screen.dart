@@ -45,10 +45,10 @@ import '../Models/Reporte.dart';
                     child: Column(
                                children: <Widget>[
                            ListTile(
-                            contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+                            contentPadding: const EdgeInsets.fromLTRB(15, 10, 25, 0),
                             title: Text('${reporte.idFoto}'),
                             subtitle: Text('Problema: ${reporte.descripcion} Fecha: ${reporte.fecha} Ubicación: ${reporte.geoubicacionRequest} Etiqueta: ${reporte.etiquetaRequest}'),
-                            leading: Icon(Icons.zoom_in_map, color: Color.fromARGB(255, 115, 209, 233) )),
+                            leading: const Icon(Icons.zoom_in_map, color: Color.fromARGB(255, 115, 209, 233) )),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
