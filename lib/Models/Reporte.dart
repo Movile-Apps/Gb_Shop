@@ -1,35 +1,87 @@
 class Reporte {
     Reporte({
-        this.idusuario,
-        this.idetiqueta,
-        this.idfoto,
-        this.idgeoubicacion,
+        this.idReporte,
+        this.idUsuario,
+        this.idEtiqueta,
+        this.idFoto,
+        this.idGeoubicacion,
         this.fecha,
-        this.descripcion
+        this.descripcion,
+        this.usuarioRequest,
+        this.etiquetaRequest,
+        this.fotoRequest,
+        this.geoubicacionRequest,
     });
 
-    int? idusuario;
-    int? idetiqueta;
-    int? idfoto;
-    int? idgeoubicacion;
-    String? fecha;
+    int? idReporte;
+    int? idUsuario;
+    int? idEtiqueta;
+    int? idFoto;
+    int? idGeoubicacion;
+    DateTime? fecha;
     String? descripcion;
+    UsuarioRequest? usuarioRequest;
+    EtiquetaRequest? etiquetaRequest;
+    FotoRequest? fotoRequest;
+    GeoubicacionRequest? geoubicacionRequest;
+}
 
-    factory Reporte.fromJson(Map<String, dynamic> json) => Reporte(
-        idusuario: json["id_usuario"],
-        idetiqueta: json["id_etiqueta"],
-        idfoto: json["id_foto"],
-        idgeoubicacion: json["id_geoubicacion"],
-        fecha: json["fecha"],
-        descripcion: json["descripcion"],
-    );
+class EtiquetaRequest {
+    EtiquetaRequest({
+        this.idEtiqueta,
+        this.idFoto,
+        this.nombre,
+        this.descripcion,
+        this.fotoRequest,
+    });
 
-    Map<String, dynamic> toJson() => {
-        "id_usuario": idusuario,
-        "id_etiqueta": idetiqueta,
-        "id_foto": idfoto,
-        "id_geoubicacion": idgeoubicacion,
-        "fecha": fecha,
-        "descripcion": descripcion,
-    };
+    int? idEtiqueta;
+    int? idFoto;
+    String? nombre;
+    String? descripcion;
+    dynamic fotoRequest;
+}
+
+class FotoRequest {
+    FotoRequest({
+        this.idFoto,
+        this.nombre,
+        this.url,
+    });
+
+    int? idFoto;
+    String? nombre;
+    String? url;
+}
+
+class GeoubicacionRequest {
+    GeoubicacionRequest({
+        this.idGeoubicacion,
+        this.latitud,
+        this.longitud,
+    });
+
+    int? idGeoubicacion;
+    double? latitud;
+    double? longitud;
+}
+
+class UsuarioRequest {
+    UsuarioRequest({
+        this.idUsuario,
+        this.idFoto,
+        this.nombre,
+        this.apellido,
+        this.correo,
+        this.contrasea,
+        this.fotoRequest,
+    });
+
+    int? idUsuario;
+    int? idFoto;
+    String? nombre;
+    String? apellido;
+    String? correo;
+    String? contrasea;
+    dynamic fotoRequest;
 }

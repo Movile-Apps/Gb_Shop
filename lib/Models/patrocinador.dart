@@ -1,20 +1,18 @@
-class Usuario {
-    Usuario({
-        this.idUsuario,
+class Patrocinador {
+    Patrocinador({
+        this.idPadrocinador,
         this.idFoto,
         this.nombre,
-        this.apellido,
-        this.correo,
-        this.contrasea,
+        this.email,
+        this.telefono,
         this.fotoRequest,
     });
 
-    int? idUsuario;
+    int? idPadrocinador;
     int? idFoto;
     String? nombre;
-    String? apellido;
-    String? correo;
-    String? contrasea;
+    String? email;
+    String? telefono;
     FotoRequest? fotoRequest;
 }
 

@@ -6,16 +6,15 @@ import 'package:http/retry.dart';
 
 class UsersProvider extends ChangeNotifier{
   List<Usuario> usuarios = [];
-  final String _host ='my.api.mockaroo.com';
-  final Map<String, dynamic> _parameters = {'key':'1f68e690'};
-
+  final String _host ='www.gbshopapi.somee.com';
+  //final Map<String, dynamic> _parameters = {'key':'1f68e690'};
   UsersProvider(){
     fetchUsuarios();
   }
 
   fetchUsuarios() async {
-    final String endPoint ='users.json';
-    final url = Uri.https(_host, endPoint, _parameters);
+    const String endPoint ='/api/Usuario';
+    final url = Uri.http(_host, endPoint);
     final client = RetryClient(http.Client());
 
     try {
@@ -23,7 +22,7 @@ class UsersProvider extends ChangeNotifier{
       notifyListeners();
       print(response);
       usuarios =
-         List<Usuario>.from(jsonDecode(response).map((x) => Usuario.fromJson(x)));
+         List<Usuario>.from(jsonDecode(response).map((x) => Usuario));
     } finally {
       client.close();
      }

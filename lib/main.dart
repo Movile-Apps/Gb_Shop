@@ -1,9 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:gb_shop/Models/Evento.dart';
 import 'package:gb_shop/Screens/screens.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:gb_shop/providers/Evento_providers.dart';
 import 'package:gb_shop/providers/providers.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +19,7 @@ class MyHttpOverrides extends HttpOverrides {
 
 class AppState extends StatelessWidget {
   const AppState({Key? key}) : super(key: key);
-  
+
 //Consumos
   @override
   Widget build(BuildContext context) {
@@ -39,7 +37,13 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(
         create: (context) => EventoProvider(), 
         lazy: false,),
-        
+
+        ChangeNotifierProvider(
+        create: (context) => PatrocinadorProvider(), 
+        lazy: false,),
+
+
+
     ], child: const MaterialApp(debugShowCheckedModeBanner: false, home: GbShop()),);
   }
 }
