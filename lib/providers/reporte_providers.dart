@@ -14,7 +14,7 @@ class ReporteProvider extends ChangeNotifier{
   }
 
   fetchetiqueta() async {
-    const String endPoint ='/api/Etiqueta';
+    const String endPoint ='/api/Reporte';
     final url = Uri.http(_host, endPoint);
     final client = RetryClient(http.Client());
 
