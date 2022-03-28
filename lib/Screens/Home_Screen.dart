@@ -3,7 +3,6 @@ import 'package:gb_shop/Screens/screens.dart';
 import 'package:gb_shop/main.dart';
 import 'package:flutter/material.dart';
 import 'package:gb_shop/providers/providers.dart';
-import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import 'package:gb_shop/Models/Response.dart' as response;
 
@@ -16,6 +15,8 @@ import 'package:gb_shop/Models/Response.dart' as response;
       //Lista
       final eventoProvider = Provider.of<EventoProvider>(context);
       final response.Response evento = eventoProvider.request;
+//        final etiquetaProvider = Provider.of<EtiquetaProvider>(context);
+//          final Response etiqueta = etiquetaProvider.request;
 
       //final reporteProvider = Provider.of<ReporteProvider>(context);
       //final Response reporte = reporteProvider.request;
@@ -100,28 +101,15 @@ import 'package:gb_shop/Models/Response.dart' as response;
             ),     
             Column(
               children: [
-                 DropdownButtonFormField(
-                    hint: const Text('Selecciona una opción'),
-                    icon: const Icon(Icons.card_membership),
-                    items: motivodenuncias
-                    .map((motivodenuncia) => 
-                    DropdownMenuItem(child: Text(motivodenuncia), value: motivodenuncia.toLowerCase()))
-                    .toList(), onChanged: (String? value) {  },),
-                    Container(
-                      padding: const EdgeInsets.all(5.0),),
-                      //
-                      ...?evento.data
-                      ?.map((evento) => 
-                         Card(
+                      ...?evento.data?.map((evento) => Card(
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                            margin: const EdgeInsets.all(5)        ,
-        
+                            margin: const EdgeInsets.all(5),
                             elevation: 5,
                             child: Column(
                                        children: <Widget>[
                                    ListTile(
                                     contentPadding: const EdgeInsets.fromLTRB(15, 10, 25, 0),
-                                    title: const Text('Evento'),
+                                    title: const Text('Evento de limpieza'),
                                     subtitle: Text('Problema: ${evento.descripcion} Fecha: ${evento.fecha} Ubicación: ${evento.geoubicacionRequest?.latitud}, ${evento.geoubicacionRequest?.longitud} Personas requeridas: ${evento.personasRequeridas}'),
                                     leading: const Icon(Icons.gpp_maybe_sharp, color: Color.fromARGB(255, 40, 199, 133) )),
                                   Row(

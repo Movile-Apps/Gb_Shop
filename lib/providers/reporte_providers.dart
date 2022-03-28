@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/retry.dart';
 
 class ReporteProvider extends ChangeNotifier{
-  Response request = new Response();
+  Response request = Response();
   final String _host ='www.gbshopapi.somee.com';
   //final Map<String, dynamic> _parameters = {'key':'960d9f80'};
   ReporteProvider(){
@@ -21,7 +21,6 @@ class ReporteProvider extends ChangeNotifier{
     try {
       final response = await client.read(url);
       notifyListeners();
-      print(response);
       request = decode(json.decode(response));
     } finally {
       client.close();
