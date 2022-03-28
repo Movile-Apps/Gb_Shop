@@ -33,7 +33,7 @@ class Patrocinador {
         nombre: json["nombre"],
         email: json["email"],
         telefono: json["telefono"],
-        fotoRequest: Foto.fromJson(json["fotoRequest"])
+        //fotoRequest: Foto.fromJson(json["fotoRequest"]),
     );
 
     Map<String, dynamic> toJson() => {

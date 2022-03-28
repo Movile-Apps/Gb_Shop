@@ -36,7 +36,7 @@ class Usuario {
         apellido: json["apellido"],
         correo: json["correo"],
         contrasea: json["contraseña"],
-        fotoRequest: Foto.fromJson(json["fotoRequest"]),
+        //fotoRequest: Foto.fromJson(json["fotoRequest"]),
     );
 
     Map<String, dynamic> toJson() => {
