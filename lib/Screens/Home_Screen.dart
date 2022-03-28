@@ -15,19 +15,9 @@ import 'package:gb_shop/Models/Response.dart' as response;
       //Lista
       final eventoProvider = Provider.of<EventoProvider>(context);
       final response.Response evento = eventoProvider.request;
-//        final etiquetaProvider = Provider.of<EtiquetaProvider>(context);
-//          final Response etiqueta = etiquetaProvider.request;
-
-      //final reporteProvider = Provider.of<ReporteProvider>(context);
-      //final Response reporte = reporteProvider.request;
-
       //final geoUbiProvider = Provider.of<GeoubicacionProvider>(context);
       //final Response geoubi = geoUbiProvider.request;
 
-      final List<String> motivodenuncias = [
-        'Puntos de interés',
-        'Eventos de limpieza'
-      ];
       return  Scaffold(
           appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -101,6 +91,7 @@ import 'package:gb_shop/Models/Response.dart' as response;
             ),     
             Column(
               children: [
+                   _What(),
                       ...?evento.data?.map((evento) => Card(
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                             margin: const EdgeInsets.all(5),
@@ -115,8 +106,8 @@ import 'package:gb_shop/Models/Response.dart' as response;
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: <Widget>[
-                                      TextButton.icon(icon: const Icon(Icons.visibility, size: 20.0, color: Color.fromARGB(255, 132, 236, 123)),
-                                            label: const Text('Visitar', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
+                                      TextButton.icon(icon: const Icon(Icons.airlines_outlined, size: 20.0, color: Color.fromARGB(255, 132, 236, 123)),
+                                            label: const Text('Acciones:', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
                                             onPressed: () {
                                             ('Confirmación');},
                                           ),
@@ -178,6 +169,19 @@ import 'package:gb_shop/Models/Response.dart' as response;
       ),
      )
     );
+  }
+  Widget _What() {
+  return Card(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    margin: const EdgeInsets.all(5),
+    elevation: 0,
+    child: Column(
+      children: <Widget>[
+        Image.asset('assets/Uso/Eventos.png', width: 350,),
+
+      ],
+    ),
+  );
   }
   
 }

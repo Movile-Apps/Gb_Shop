@@ -47,12 +47,12 @@ import 'package:provider/provider.dart';
                             contentPadding: const EdgeInsets.fromLTRB(15, 10, 25, 0),
                             title: Text('${reporte.idFoto}'),
                             subtitle: Text('Problema: ${reporte.descripcion} Fecha: ${reporte.fecha} Ubicación: ${reporte.geoubicacionRequest} Etiqueta: ${reporte.etiquetaRequest}'),
-                            leading: const Icon(Icons.zoom_in_map, color: Color.fromARGB(255, 115, 209, 233) )),
+                            leading: const Icon(Icons.align_vertical_bottom_rounded, color: Color.fromARGB(255, 139, 233, 115) )),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
-                              TextButton.icon(icon: const Icon(Icons.visibility, size: 20.0, color: Color.fromARGB(255, 132, 236, 123)),
-                                    label: const Text('Visitar', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
+                              TextButton.icon(icon: const Icon(Icons.airlines_outlined, size: 20.0, color: Color.fromARGB(255, 132, 236, 123)),
+                                    label: const Text('Acciones:', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
                                     onPressed: () {
                                     ('Confirmación');},
                                   ),
