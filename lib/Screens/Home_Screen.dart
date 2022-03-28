@@ -2,13 +2,10 @@ import 'dart:ffi';
 import 'package:gb_shop/Screens/screens.dart';
 import 'package:gb_shop/main.dart';
 import 'package:flutter/material.dart';
-import 'package:gb_shop/Models/Evento.dart';
-import 'package:gb_shop/Models/GeoUbi.dart';
-import 'package:gb_shop/Models/Reporte.dart';
-import 'package:gb_shop/providers/GeoUbi_providers.dart';
 import 'package:gb_shop/providers/providers.dart';
+import 'package:http/http.dart';
 import 'package:provider/provider.dart';
-import '../Models/Evento.dart';
+import 'package:gb_shop/Models/Response.dart' as response;
 
  class HomeScreen extends StatelessWidget{
 
@@ -18,13 +15,13 @@ import '../Models/Evento.dart';
     Widget build(BuildContext context) {
       //Lista
       final eventoProvider = Provider.of<EventoProvider>(context);
-      final List<Evento> evento = eventoProvider.eventos;
+      final response.Response evento = eventoProvider.request;
 
-      final reporteProvider = Provider.of<ReporteProvider>(context);
-      final List<Reporte> reporte = reporteProvider.reportes;
+      //final reporteProvider = Provider.of<ReporteProvider>(context);
+      //final Response reporte = reporteProvider.request;
 
-      final geoUbiProvider = Provider.of<GeoUbicacionProvider>(context);
-      final List<GeoUbicacion> geoubi = geoUbiProvider.geoUbicaciones;
+      //final geoUbiProvider = Provider.of<GeoubicacionProvider>(context);
+      //final Response geoubi = geoUbiProvider.request;
 
       final List<String> motivodenuncias = [
         'Puntos de interés',
@@ -113,8 +110,8 @@ import '../Models/Evento.dart';
                     Container(
                       padding: const EdgeInsets.all(5.0),),
                       //
-                      ...evento
-                      .map((evento) => 
+                      ...?evento.data
+                      ?.map((evento) => 
                          Card(
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                             margin: const EdgeInsets.all(5)        ,

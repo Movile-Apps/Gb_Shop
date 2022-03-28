@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gb_shop/Models/Reporte.dart';
+import 'package:gb_shop/Models/Response.dart';
 import 'package:gb_shop/Screens/screens.dart';
-import 'package:gb_shop/providers/reporte_providers.dart';
+import 'package:gb_shop/providers/Reporte_providers.dart';
 import 'package:provider/provider.dart';
-import '../Models/Reporte.dart';
 
  class ConsPOIScreen extends StatelessWidget{
 
@@ -13,7 +12,7 @@ import '../Models/Reporte.dart';
     Widget build(BuildContext context) {
       //
       final reporteProvider = Provider.of<ReporteProvider>(context);
-      final List<Reporte> reporte = reporteProvider.reportes;
+      final Response reporte = reporteProvider.request;
 
       return  Scaffold(
         appBar: AppBar(
@@ -35,8 +34,8 @@ import '../Models/Reporte.dart';
             child: Column(
               children: <Widget>[
                 _miPOI(),
-                  ...reporte
-                      .map((reporte) => 
+                  ...?reporte.data
+                      ?.map((reporte) => 
                          Card(
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                     margin: const EdgeInsets.all(15),

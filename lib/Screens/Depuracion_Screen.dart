@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gb_shop/Models/Etiqueta.dart';
+import 'package:gb_shop/Models/Response.dart';
 import 'package:gb_shop/providers/providers.dart';
 import 'package:provider/provider.dart';
-import '../Models/Etiqueta.dart';
-
 
 class DepuracionScreen extends StatelessWidget {
   const DepuracionScreen({Key? key}) : super(key: key);
@@ -29,7 +27,8 @@ class DepuracionScreen extends StatelessWidget {
                     Text('Estado: ${etiqueta.exito}'),
                     Text('Mensaje: ${etiqueta.mensaje}'),
                     ...?etiqueta.data?.map((etiqueta) => ListTile(
-                     title: Text('Etiqueta: ${etiqueta.nombre}')
+                     title: Text('Etiqueta: ${etiqueta.nombre}'),
+                     subtitle: Text('Etiqueta: ${etiqueta.descripcion}'),
                     ))
               ],)),)
      ),

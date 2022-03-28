@@ -1,19 +1,20 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Models/Evento.dart';
+import 'package:gb_shop/Models/Response.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/retry.dart';
 
 class EventoProvider extends ChangeNotifier{
-  List<Evento> eventos = [];
+  Response request = new Response();
   final String _host ='www.gbshopapi.somee.com';
-  //final Map<String, dynamic> _parameters = {'key':''};
+  //final Map<String, dynamic> _parameters = {'key':'960d9f80'};
   EventoProvider(){
-    fetchEventos();
+    fetchetiqueta();
   }
-//http://www.gbshopapi.somee.com/api/EventoLimpieza
-  fetchEventos() async {
-     String endPoint ='/api/EventoLimpieza';
+
+  fetchetiqueta() async {
+    const String endPoint ='/api/Etiqueta';
     final url = Uri.http(_host, endPoint);
     final client = RetryClient(http.Client());
 
@@ -21,10 +22,21 @@ class EventoProvider extends ChangeNotifier{
       final response = await client.read(url);
       notifyListeners();
       print(response);
-      eventos =
-         List<Evento>.from(json.decode(response).map((x) => Evento()));
+      request = decode(json.decode(response));
     } finally {
       client.close();
      }
   } 
+
+  decode(Map<String, dynamic> json) => Response(
+        exito: json["exito"],
+        mensaje: json["mensaje"],
+        data: List<Evento>.from(json["data"].map((x) => Evento.fromJson(x))),
+    );
+
+  Map<String, dynamic> encode(Response object) => {
+        "exito": object.exito,
+        "mensaje": object.mensaje,
+        "data": object.data?.map((x) => x.toJson())
+    };
 }

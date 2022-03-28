@@ -1,15 +1,15 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:gb_shop/Models/Patrocinador.dart';
+import 'package:gb_shop/Models/Usuario.dart';
 import 'package:gb_shop/Models/Response.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/retry.dart';
 
-class PatrocinadorProvider extends ChangeNotifier{
+class UsuarioProvider extends ChangeNotifier{
   Response request = new Response();
   final String _host ='www.gbshopapi.somee.com';
   //final Map<String, dynamic> _parameters = {'key':'960d9f80'};
-  PatrocinadorProvider(){
+  UsuarioProvider(){
     fetchetiqueta();
   }
 
@@ -31,7 +31,7 @@ class PatrocinadorProvider extends ChangeNotifier{
   decode(Map<String, dynamic> json) => Response(
         exito: json["exito"],
         mensaje: json["mensaje"],
-        data: List<Patrocinador>.from(json["data"].map((x) => Patrocinador.fromJson(x))),
+        data: List<Usuario>.from(json["data"].map((x) => Usuario.fromJson(x))),
     );
 
   Map<String, dynamic> encode(Response object) => {

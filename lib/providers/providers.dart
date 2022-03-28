@@ -1,6 +1,6 @@
-export 'package:gb_shop/providers/users_provider.dart';
-export 'package:gb_shop/providers/reporte_providers.dart';
-export 'package:gb_shop/providers/patrocinador_providers.dart';
-export 'package:gb_shop/providers/evento_providers.dart';
-export 'package:gb_shop/providers/foto_providers.dart';
+export 'package:gb_shop/providers/Usuario_provider.dart';
+export 'package:gb_shop/providers/Reporte_providers.dart';
+export 'package:gb_shop/providers/Patrocinador_providers.dart';
+export 'package:gb_shop/providers/Evento_providers.dart';
+export 'package:gb_shop/providers/Foto_providers.dart';
 export 'package:gb_shop/providers/Etiqueta_providers.dart';

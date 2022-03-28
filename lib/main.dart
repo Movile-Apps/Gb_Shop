@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Screens/screens.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:gb_shop/providers/GeoUbi_providers.dart';
+import 'package:gb_shop/providers/Geoubicacion_providers.dart';
 import 'package:gb_shop/providers/providers.dart';
 import 'package:provider/provider.dart';
 
@@ -29,7 +29,7 @@ class AppState extends StatelessWidget {
     providers: [
       
       ChangeNotifierProvider(
-        create: (context) => UsersProvider(), 
+        create: (context) => UsuarioProvider(), 
         lazy: false,),
 
         ChangeNotifierProvider(
@@ -45,7 +45,7 @@ class AppState extends StatelessWidget {
         lazy: false,),
 
         ChangeNotifierProvider(
-        create: (context) => GeoUbicacionProvider(), 
+        create: (context) => GeoubicacionProvider(), 
         lazy: false,),
 
         ChangeNotifierProvider(

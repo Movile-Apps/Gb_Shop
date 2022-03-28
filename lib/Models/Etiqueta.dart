@@ -1,36 +1,14 @@
 // To parse this JSON data, do
 //
-//     final response = responseFromJson(jsonString);
+//     final etiqueta = etiquetaFromJson(jsonString);
 
 import 'dart:convert';
 
-Response responseFromJson(String str) => Response.fromJson(json.decode(str));
+import 'package:gb_shop/Models/Foto.dart';
 
-String responseToJson(Response data) => json.encode(data.toJson());
+Etiqueta etiquetaFromJson(String str) => Etiqueta.fromJson(json.decode(str));
 
-class Response {
-    Response({
-        this.exito,
-        this.mensaje,
-        this.data,
-    });
-
-    int? exito;
-    String? mensaje;
-    List<Etiqueta>? data;
-
-    factory Response.fromJson(Map<String, dynamic> json) => Response(
-        exito: json["exito"],
-        mensaje: json["mensaje"],
-        data: List<Etiqueta>.from(json["data"].map((x) => Etiqueta.fromJson(x))),
-    );
-
-    Map<String, dynamic> toJson() => {
-        "exito": exito,
-        "mensaje": mensaje,
-        //"data": List<dynamic>.from(data.map((x) => x.toJson())),
-    };
-}
+String etiquetaToJson(Etiqueta data) => json.encode(data.toJson());
 
 class Etiqueta {
     Etiqueta({
@@ -45,14 +23,14 @@ class Etiqueta {
     int? idFoto;
     String? nombre;
     String? descripcion;
-    FotoRequest? fotoRequest;
+    Foto? fotoRequest;
 
     factory Etiqueta.fromJson(Map<String, dynamic> json) => Etiqueta(
         idEtiqueta: json["idEtiqueta"],
         idFoto: json["idFoto"],
         nombre: json["nombre"],
         descripcion: json["descripcion"],
-        fotoRequest: FotoRequest.fromJson(json["fotoRequest"]),
+        fotoRequest: Foto.fromJson(json["fotoRequest"]),
     );
 
     Map<String, dynamic> toJson() => {
@@ -61,29 +39,5 @@ class Etiqueta {
         "nombre": nombre,
         "descripcion": descripcion,
         "fotoRequest": fotoRequest?.toJson(),
-    };
-}
-
-class FotoRequest {
-    FotoRequest({
-        this.idFoto,
-        this.nombre,
-        this.url,
-    });
-
-    int? idFoto;
-    String? nombre;
-    String? url;
-
-    factory FotoRequest.fromJson(Map<String, dynamic> json) => FotoRequest(
-        idFoto: json["idFoto"],
-        nombre: json["nombre"],
-        url: json["url"],
-    );
-
-    Map<String, dynamic> toJson() => {
-        "idFoto": idFoto,
-        "nombre": nombre,
-        "url": url,
     };
 }

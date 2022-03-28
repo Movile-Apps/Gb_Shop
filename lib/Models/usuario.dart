@@ -1,3 +1,15 @@
+// To parse this JSON data, do
+//
+//     final geoubicacion = geoubicacionFromJson(jsonString);
+
+import 'dart:convert';
+
+import 'package:gb_shop/Models/Foto.dart';
+
+Usuario geoubicacionFromJson(String str) => Usuario.fromJson(json.decode(str));
+
+String geoubicacionToJson(Usuario data) => json.encode(data.toJson());
+
 class Usuario {
     Usuario({
         this.idUsuario,
@@ -15,17 +27,25 @@ class Usuario {
     String? apellido;
     String? correo;
     String? contrasea;
-    FotoRequest? fotoRequest;
-}
+    Foto? fotoRequest;
 
-class FotoRequest {
-    FotoRequest({
-        this.idFoto,
-        this.nombre,
-        this.url,
-    });
+    factory Usuario.fromJson(Map<String, dynamic> json) => Usuario(
+        idUsuario: json["idUsuario"],
+        idFoto: json["idFoto"],
+        nombre: json["nombre"],
+        apellido: json["apellido"],
+        correo: json["correo"],
+        contrasea: json["contraseña"],
+        fotoRequest: Foto.fromJson(json["fotoRequest"]),
+    );
 
-    int? idFoto;
-    String? nombre;
-    String? url;
+    Map<String, dynamic> toJson() => {
+        "idUsuario": idUsuario,
+        "idFoto": idFoto,
+        "nombre": nombre,
+        "apellido": apellido,
+        "correo": correo,
+        "contraseña": contrasea,
+        "fotoRequest": fotoRequest?.toJson(),
+    };
 }

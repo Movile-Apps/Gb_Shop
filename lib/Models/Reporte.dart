@@ -1,3 +1,18 @@
+// To parse this JSON data, do
+//
+//     final evento = eventoFromJson(jsonString);
+
+import 'dart:convert';
+
+import 'package:gb_shop/Models/Etiqueta.dart';
+import 'package:gb_shop/Models/Foto.dart';
+import 'package:gb_shop/Models/Geoubicacion.dart';
+import 'package:gb_shop/Models/Usuario.dart';
+
+Reporte eventoFromJson(String str) => Reporte.fromJson(json.decode(str));
+
+String eventoToJson(Reporte data) => json.encode(data.toJson());
+
 class Reporte {
     Reporte({
         this.idReporte,
@@ -20,68 +35,36 @@ class Reporte {
     int? idGeoubicacion;
     DateTime? fecha;
     String? descripcion;
-    UsuarioRequest? usuarioRequest;
-    EtiquetaRequest? etiquetaRequest;
-    FotoRequest? fotoRequest;
-    GeoubicacionRequest? geoubicacionRequest;
-}
+    Usuario? usuarioRequest;
+    Etiqueta? etiquetaRequest;
+    Foto? fotoRequest;
+    Geoubicacion? geoubicacionRequest;
 
-class EtiquetaRequest {
-    EtiquetaRequest({
-        this.idEtiqueta,
-        this.idFoto,
-        this.nombre,
-        this.descripcion,
-        this.fotoRequest,
-    });
+    factory Reporte.fromJson(Map<String, dynamic> json) => Reporte(
+        idReporte: json["idReporte"],
+        idUsuario: json["idUsuario"],
+        idEtiqueta: json["idEtiqueta"],
+        idFoto: json["idFoto"],
+        idGeoubicacion: json["idGeoubicacion"],
+        fecha: DateTime.parse(json["fecha"]),
+        descripcion: json["descripcion"],
+        usuarioRequest: Usuario.fromJson(json["usuarioRequest"]),
+        etiquetaRequest: Etiqueta.fromJson(json["etiquetaRequest"]),
+        fotoRequest: Foto.fromJson(json["fotoRequest"]),
+        geoubicacionRequest: Geoubicacion.fromJson(json["geoubicacionRequest"]),
+    );
 
-    int? idEtiqueta;
-    int? idFoto;
-    String? nombre;
-    String? descripcion;
-    dynamic fotoRequest;
-}
-
-class FotoRequest {
-    FotoRequest({
-        this.idFoto,
-        this.nombre,
-        this.url,
-    });
-
-    int? idFoto;
-    String? nombre;
-    String? url;
-}
-
-class GeoubicacionRequest {
-    GeoubicacionRequest({
-        this.idGeoubicacion,
-        this.latitud,
-        this.longitud,
-    });
-
-    int? idGeoubicacion;
-    double? latitud;
-    double? longitud;
-}
-
-class UsuarioRequest {
-    UsuarioRequest({
-        this.idUsuario,
-        this.idFoto,
-        this.nombre,
-        this.apellido,
-        this.correo,
-        this.contrasea,
-        this.fotoRequest,
-    });
-
-    int? idUsuario;
-    int? idFoto;
-    String? nombre;
-    String? apellido;
-    String? correo;
-    String? contrasea;
-    dynamic fotoRequest;
+    Map<String, dynamic> toJson() => {
+        "idReporte": idReporte,
+        "idUsuario": idUsuario,
+        "idEtiqueta": idEtiqueta,
+        "idFoto": idFoto,
+        "idGeoubicacion": idGeoubicacion,
+        "fecha": fecha?.toIso8601String(),
+        "descripcion": descripcion,
+        "usuarioRequest": usuarioRequest?.toJson(),
+        "etiquetaRequest": etiquetaRequest?.toJson(),
+        "fotoRequest": fotoRequest?.toJson(),
+        "geoubicacionRequest": geoubicacionRequest?.toJson(),
+    };
 }
