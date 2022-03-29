@@ -30,7 +30,7 @@ class Etiqueta {
         idFoto: json["idFoto"],
         nombre: json["nombre"],
         descripcion: json["descripcion"],
-        //fotoRequest: Foto.fromJson(json["fotoRequest"]),
+        fotoRequest: Foto.fromJson(json["fotoRequest"]),
     );
 
     Map<String, dynamic> toJson() => {
