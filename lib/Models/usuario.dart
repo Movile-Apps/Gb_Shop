@@ -6,9 +6,9 @@ import 'dart:convert';
 
 import 'package:gb_shop/Models/Foto.dart';
 
-Usuario geoubicacionFromJson(String str) => Usuario.fromJson(json.decode(str));
+Usuario usuarioFromJson(String str) => Usuario.fromJson(json.decode(str));
 
-String geoubicacionToJson(Usuario data) => json.encode(data.toJson());
+String usuarioToJson(Usuario data) => json.encode(data.toJson());
 
 class Usuario {
     Usuario({

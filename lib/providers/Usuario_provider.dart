@@ -26,7 +26,22 @@ class UsuarioProvider extends ChangeNotifier{
     } finally {
       client.close();
      }
-  } 
+  }
+
+  Future<Usuario> post(Usuario usuario) async{
+    const String endPoint ='/api/Usuario';
+    final url = Uri.http(_host, endPoint);
+    final client = RetryClient(http.Client());
+
+    try {
+      final response = await client.post(url,body: usuarioToJson(usuario));
+      notifyListeners();
+      print(response.body);
+      return decode(json.decode(response.body));
+    } finally {
+      client.close();
+    }
+  }
 
   decode(Map<String, dynamic> json) => Response(
         exito: json["exito"],

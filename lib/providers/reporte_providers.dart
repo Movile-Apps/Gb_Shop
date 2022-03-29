@@ -25,7 +25,22 @@ class ReporteProvider extends ChangeNotifier{
     } finally {
       client.close();
      }
-  } 
+  }
+
+  Future<Reporte> post(Reporte reporte) async{
+    const String endPoint ='/api/Reporte';
+    final url = Uri.http(_host, endPoint);
+    final client = RetryClient(http.Client());
+
+    try {
+      final response = await client.post(url,body: reporteToJson(reporte));
+      notifyListeners();
+      print(response.body);
+      return decode(json.decode(response.body));
+    } finally {
+      client.close();
+    }
+  }
 
   decode(Map<String, dynamic> json) => Response(
         exito: json["exito"],

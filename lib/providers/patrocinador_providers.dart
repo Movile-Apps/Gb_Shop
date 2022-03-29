@@ -26,7 +26,22 @@ class PatrocinadorProvider extends ChangeNotifier{
     } finally {
       client.close();
      }
-  } 
+  }
+
+  Future<Patrocinador> post(Patrocinador patrocinador) async{
+    const String endPoint ='/api/Patrocinador';
+    final url = Uri.http(_host, endPoint);
+    final client = RetryClient(http.Client());
+
+    try {
+      final response = await client.post(url,body: patrocinadorToJson(patrocinador));
+      notifyListeners();
+      print(response.body);
+      return decode(json.decode(response.body));
+    } finally {
+      client.close();
+    }
+  }
 
   decode(Map<String, dynamic> json) => Response(
         exito: json["exito"],

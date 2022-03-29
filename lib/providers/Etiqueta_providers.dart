@@ -25,8 +25,23 @@ class EtiquetaProvider extends ChangeNotifier{
       request = decode(json.decode(response));
     } finally {
       client.close();
-     }
-  } 
+    }
+  }
+
+  Future<Etiqueta> post(Etiqueta etiqueta) async{
+    const String endPoint ='/api/Etiqueta';
+    final url = Uri.http(_host, endPoint);
+    final client = RetryClient(http.Client());
+
+    try {
+      final response = await client.post(url,body: etiquetaToJson(etiqueta));
+      notifyListeners();
+      print(response.body);
+      return decode(json.decode(response.body));
+    } finally {
+      client.close();
+    }
+  }
 
   decode(Map<String, dynamic> json) => Response(
         exito: json["exito"],

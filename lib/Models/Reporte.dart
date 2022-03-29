@@ -9,9 +9,9 @@ import 'package:gb_shop/Models/Foto.dart';
 import 'package:gb_shop/Models/Geoubicacion.dart';
 import 'package:gb_shop/Models/Usuario.dart';
 
-Reporte eventoFromJson(String str) => Reporte.fromJson(json.decode(str));
+Reporte reporteFromJson(String str) => Reporte.fromJson(json.decode(str));
 
-String eventoToJson(Reporte data) => json.encode(data.toJson());
+String reporteToJson(Reporte data) => json.encode(data.toJson());
 
 class Reporte {
     Reporte({

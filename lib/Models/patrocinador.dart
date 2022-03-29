@@ -6,9 +6,9 @@ import 'dart:convert';
 
 import 'package:gb_shop/Models/Foto.dart';
 
-Patrocinador geoubicacionFromJson(String str) => Patrocinador.fromJson(json.decode(str));
+Patrocinador patrocinadorFromJson(String str) => Patrocinador.fromJson(json.decode(str));
 
-String geoubicacionToJson(Patrocinador data) => json.encode(data.toJson());
+String patrocinadorToJson(Patrocinador data) => json.encode(data.toJson());
 
 class Patrocinador {
     Patrocinador({

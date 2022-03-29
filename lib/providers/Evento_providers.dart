@@ -28,6 +28,19 @@ class EventoProvider extends ChangeNotifier{
      }
   } 
 
+  Future<Evento> post(Evento evento) async{
+    const String endPoint ='/api/EventoLimpieza';
+    final url = Uri.http(_host, endPoint);
+    final client = RetryClient(http.Client());
+
+    try {
+      final response = await http.post(url,body: eventoToJson(evento));
+      return decode(json.decode(response.body));
+    } finally {
+      client.close();
+    }
+  }
+
   decode(Map<String, dynamic> json) => Response(
         exito: json["exito"],
         mensaje: json["mensaje"],
