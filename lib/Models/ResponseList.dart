@@ -1,7 +1,7 @@
 //String responseToJson(ResponseList data) => json.encode(data.toJson());
 
-class Response {
-    Response({
+class ResponseList {
+    ResponseList({
         this.exito,
         this.mensaje,
         this.data,
@@ -9,5 +9,7 @@ class Response {
 
     int? exito;
     String? mensaje;
-    dynamic data;
+    List<dynamic>? data;
+
+    
 }

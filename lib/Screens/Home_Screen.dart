@@ -4,7 +4,7 @@ import 'package:gb_shop/main.dart';
 import 'package:flutter/material.dart';
 import 'package:gb_shop/providers/providers.dart';
 import 'package:provider/provider.dart';
-import 'package:gb_shop/Models/Response.dart' as response;
+import 'package:gb_shop/Models/ResponseList.dart' as response;
 
  class HomeScreen extends StatelessWidget{
 
@@ -14,9 +14,9 @@ import 'package:gb_shop/Models/Response.dart' as response;
     Widget build(BuildContext context) {
       //Lista
       final eventoProvider = Provider.of<EventoProvider>(context);
-      final response.Response evento = eventoProvider.request;
+      final response.ResponseList evento = eventoProvider.request;
       //final geoUbiProvider = Provider.of<GeoubicacionProvider>(context);
-      //final Response geoubi = geoUbiProvider.request;
+      //final ResponseList geoubi = geoUbiProvider.request;
 
       return  Scaffold(
           appBar: AppBar(

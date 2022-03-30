@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Models/Etiqueta.dart';
-import 'package:gb_shop/Models/Response.dart';
+import 'package:gb_shop/Models/ResponseList.dart';
 import 'package:gb_shop/providers/providers.dart';
 import 'package:provider/provider.dart';
 import '../Models/Foto.dart';
@@ -12,7 +12,7 @@ class DepuracionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
         final etiquetaProvider = Provider.of<EtiquetaProvider>(context);
-          final Response etiqueta = etiquetaProvider.request;
+          final ResponseList etiqueta = etiquetaProvider.request;
 
     return MaterialApp(
       title: 'Pruebas',
@@ -73,8 +73,8 @@ class DepuracionScreen extends StatelessWidget {
                             TextButton.icon(icon: const Icon(Icons.abc, size: 20.0, color: Color.fromARGB(255, 145, 240, 68)),
                                             label: const Text('Rechazar', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
                                             onPressed: () {
-                                            final Foto ft = new Foto(idFoto: 0, nombre: 'Foto', url: 'dADFAAA',);
-                                            final Etiqueta et = new Etiqueta(idEtiqueta: 0, nombre: 'Hola', idFoto: 0, descripcion: 'Es una pasada', fotoRequest: ft);
+                                            final Foto ft = Foto(idFoto: 0, nombre: 'Foto', url: 'dADFAAA');
+                                            final Etiqueta et = Etiqueta(idEtiqueta: 0, nombre: 'Hola', idFoto: 0, descripcion: 'Es una pasada', fotoRequest: ft);
 
                                             etiquetaProvider.post(et);
                                             },

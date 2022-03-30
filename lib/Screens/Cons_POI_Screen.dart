@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gb_shop/Models/Response.dart';
+import 'package:gb_shop/Models/ResponseList.dart';
 import 'package:gb_shop/Screens/screens.dart';
 import 'package:gb_shop/providers/Reporte_providers.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
     Widget build(BuildContext context) {
       //
       final reporteProvider = Provider.of<ReporteProvider>(context);
-      final Response reporte = reporteProvider.request;
+      final ResponseList reporte = reporteProvider.request;
 
       return  Scaffold(
         appBar: AppBar(
