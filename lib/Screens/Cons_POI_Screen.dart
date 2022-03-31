@@ -5,7 +5,6 @@ import 'package:gb_shop/providers/Reporte_providers.dart';
 import 'package:provider/provider.dart';
 
  class ConsPOIScreen extends StatelessWidget{
-
    const ConsPOIScreen ({Key? key}) : super(key : key);
    
     @override

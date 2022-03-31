@@ -9,7 +9,7 @@ import 'package:http/retry.dart';
 
 class FotoProvider extends ChangeNotifier{
   ResponseList request = new ResponseList();
-  final String _host ='www.gbshopapi.somee.com';
+  final String _host ='www.garbagereport.somee.com';
   //final Map<String, dynamic> _parameters = {'key':'960d9f80'};
   FotoProvider(){
     fetchetiqueta();

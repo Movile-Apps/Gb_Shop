@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Screens/screens.dart';
+import 'package:gb_shop/providers/Usuario_provider.dart';
+import 'package:gb_shop/Models/ResponseList.dart';
 import 'package:provider/provider.dart';
 
 class PerfilScreen extends StatelessWidget {
@@ -7,7 +9,9 @@ class PerfilScreen extends StatelessWidget {
 
   @override
     Widget build(BuildContext context) {
-      // final ReporteProvider = Provider.of(context);
+      final usuarioProvider = Provider.of<UsuarioProvider>(context);
+      final ResponseList usuario = usuarioProvider.request;
+
       return  Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.greenAccent,
@@ -22,12 +26,26 @@ class PerfilScreen extends StatelessWidget {
               children: <Widget>[
                 _perfilimage(),
                 Column( mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _cardName(),
-                    _cardCorreo(),
-                    _cardPass(),
-                  ],
-                ),
+                  children: <Widget>[
+
+                    ...?usuario.data?.map((usuario) => 
+                    Card(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                       const ListTile(
+                        leading: Icon(Icons.person_pin, color: Color.fromARGB(255, 132, 236, 123)),
+                        title: Text('Datos personales:', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),),
+                      Text('Nombre completo: ${usuario.nombre} ${usuario.apellido}', style: const TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
+                      Text('Email: ${usuario.correo}', style: const TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
+                      const Text('Contraseña: *********', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
+                      Container(
+                        alignment: Alignment.center,
+                      ) ,
+                    ],
+                  ),
+                )
+            ),
 
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -56,13 +74,13 @@ class PerfilScreen extends StatelessWidget {
 
                   IconButton(
                     icon: const Icon(Icons.edit),
-                    color: Color.fromARGB(255, 90, 202, 236),
+                    color: const Color.fromARGB(255, 90, 202, 236),
                               onPressed: (){}
                     ),
 
                     IconButton(
                     icon: const Icon(Icons.logout),
-                    color: Color.fromARGB(255, 228, 62, 32),
+                    color: const Color.fromARGB(255, 228, 62, 32),
                               onPressed: (){
                                 Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const LoginScreen(),));
                               }
@@ -70,7 +88,7 @@ class PerfilScreen extends StatelessWidget {
 
                   IconButton(
                     icon: const Icon(Icons.delete),
-                    color: Color.fromARGB(255, 248, 39, 39),
+                    color: const Color.fromARGB(255, 248, 39, 39),
                       onPressed: (){
                         showDialog<String>(
                           context: context,
@@ -96,8 +114,10 @@ class PerfilScreen extends StatelessWidget {
                 ],),
              ]
             )
+            ]
           )
         )
+      )
       );
     }
 
@@ -115,62 +135,7 @@ class PerfilScreen extends StatelessWidget {
     );
   }
 
-  Widget _cardName() {
-  return Card(
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-    margin: const EdgeInsets.all(5),
 
-    elevation: 5,
-    child: Column(
-      // ignore: prefer_const_literals_to_create_immutables
-      children: <Widget>[
-        const ListTile(
-          contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
-          title: Text('Nombre:'),
-          subtitle: Text('Cauich Colli Rafael.'),leading: 
-          Icon(Icons.personal_injury, color: Color.fromARGB(255, 125, 235, 82) )),
-     ],
-    ),
-   );
-  }
-
-Widget _cardCorreo() {
-  return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      margin: const EdgeInsets.all(5),
-
-      elevation: 5,
-      child: Column(
-        // ignore: prefer_const_literals_to_create_immutables
-        children: <Widget>[
-          const ListTile(
-            contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
-            title: Text('Correo electronico:'),
-            subtitle: Text('xxrafafloxx@gmail.com'),leading: 
-            Icon(Icons.mail_sharp, color: Color.fromARGB(255, 125, 235, 82) )),
-        ],
-      ),
-    );
-  }
-
-  Widget _cardPass() {
-  return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      margin: const EdgeInsets.all(5),
-
-      elevation: 5,
-      child: Column(
-        // ignore: prefer_const_literals_to_create_immutables
-        children: <Widget>[
-          const ListTile(
-            contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
-            title: Text('Contraseña:'),
-            subtitle: Text('123456789'),leading: 
-            Icon(Icons.key_rounded, color: Color.fromARGB(255, 125, 235, 82) )),
-        ],
-      ),
-    );
-  }
 
 }
 

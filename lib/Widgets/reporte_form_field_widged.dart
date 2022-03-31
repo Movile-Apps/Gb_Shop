@@ -12,6 +12,9 @@ class ReporteFormFieldWidged extends StatelessWidget {
   final IconData? icon;
   final IconData? prefixIcon;
   final IconData? suffix;
+  final String propertyName;
+  final Map<String, String> formValues;
+
   const ReporteFormFieldWidged({
     Key? key, this.value='', 
     this.hintText, 
@@ -23,8 +26,17 @@ class ReporteFormFieldWidged extends StatelessWidget {
     this.keyboardType = TextInputType.name, 
     this.icon, 
     this.prefixIcon, 
-    this.suffix,
+    this.suffix, 
+    required this.propertyName, 
+    required this.formValues,
   }) : super(key: key);
+  
+  String? validateNullOrEmpty(String? value){
+    if (value == null) return 'Por favor ingresa los datos.';
+
+    if(value.isEmpty) return 'Por favor ingresa los datos.';
+  return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +55,9 @@ class ReporteFormFieldWidged extends StatelessWidget {
         prefixIcon: prefixIcon == null ? null: Icon(prefixIcon),
         suffix: suffix == null ? null: Icon(suffix)
       ),
+      validator: (value) => validateNullOrEmpty(value),
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      onChanged: (value) => formValues[propertyName] = value,
     );
   }
 }

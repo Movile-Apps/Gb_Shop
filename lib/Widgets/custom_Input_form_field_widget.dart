@@ -12,6 +12,8 @@ class CustomInputFormFieldWidget extends StatelessWidget {
   final IconData? icon;
   final IconData? prefixIcon;
   final IconData? suffix;
+  final String propertyName;
+  final Map<String, String> formValues;
 
 
   const CustomInputFormFieldWidget({
@@ -25,8 +27,19 @@ class CustomInputFormFieldWidget extends StatelessWidget {
     this.keyboardType = TextInputType.name, 
     this.icon, 
     this.prefixIcon, 
-    this.suffix,
+    this.suffix, 
+    required this.propertyName, 
+    required this.formValues,
   }) : super(key: key);
+
+  String? validateNullOrEmpty(String? value){
+    if (value == null) return 'Por favor llena el campo';
+
+    if(value.isEmpty) return 'Por favor llena el campo';
+
+    return null;
+  }
+
 
   @override
   Widget build(BuildContext context) {

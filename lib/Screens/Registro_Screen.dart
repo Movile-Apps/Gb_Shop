@@ -1,6 +1,8 @@
 
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Widgets/custom_Input_form_field_widget.dart';
+import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
@@ -120,6 +122,15 @@ class _RegistroScreenState extends State<RegistroScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    final Map<String, String> formValues = {
+    'Email' : '',
+    'Contraseña' : '',
+    'Nombre' : '',
+    'Apellidos' : '',
+    };
+
+    final GlobalKey<FormState> myFormKey = GlobalKey<FormState>();
     return SafeArea(
       child: 
       Scaffold(
@@ -137,11 +148,32 @@ class _RegistroScreenState extends State<RegistroScreen> {
               // ignore: prefer_const_literals_to_create_immutables
               children: [
                 Image.asset('assets/Uso/Registro.png', height: 200.0,),
-                const CustomInputFormFieldWidget(labelText: 'Email', hintText: 'ejemplo@gmail.com', icon: Icons.email,),
-                const CustomInputFormFieldWidget(labelText: 'Contraseña', hintText: 'Escribe una nueva contraseña',icon: Icons.lock),
-                const CustomInputFormFieldWidget(labelText: 'Confirma tu contraseña', hintText: 'Escribe la misma contraseña',icon: Icons.lock_sharp),
-                const CustomInputFormFieldWidget(labelText: 'Nombre', hintText: 'Escribe tu nombre o nombres',icon: Icons.person),
-                const CustomInputFormFieldWidget(labelText: 'Apellidos', hintText: 'Escribe tu apellido paterno y materno',icon: Icons.person),
+                CustomInputFormFieldWidget(
+                  labelText: 'Email', 
+                  hintText: 'ejemplo@gmail.com', 
+                  icon: Icons.email,
+                  propertyName: 'email',
+                  formValues: formValues),
+
+                CustomInputFormFieldWidget(
+                  labelText: 'Contraseña', 
+                  hintText: 'Escribe una nueva contraseña',
+                  icon: Icons.lock,
+                  propertyName: 'Contraseña',
+                  formValues: formValues),
+
+                CustomInputFormFieldWidget(
+                  labelText: 'Nombre', 
+                  hintText: 'Escribe tu nombre o nombres',
+                  icon: Icons.person,
+                  propertyName: 'Nombre',
+                  formValues: formValues),
+
+                CustomInputFormFieldWidget(labelText: 'Apellidos', 
+                hintText: 'Escribe tu apellido paterno y materno',
+                icon: Icons.person,
+                propertyName: 'Apellidos',
+                formValues: formValues,),
                 //Boton para activar la camara
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -172,7 +204,14 @@ class _RegistroScreenState extends State<RegistroScreen> {
                           ),
                         ),
                       onPressed: (){
-                        Navigator.of(context).pop();
+                        //Navigator.of(context).pop();
+                        bool isValidate = myFormKey.currentState?.validate() ?? false;
+                            if (isValidate) {
+                              Future<int> code = postRegister(formValues);
+                              if(postRegister(formValues) == 201){
+                                Navigator.pushNamed(context, 'LoginScreen');
+                              }
+                            }
                       }
                     ),
                 ElevatedButton(
@@ -202,5 +241,18 @@ class _RegistroScreenState extends State<RegistroScreen> {
     )
   ); 
  }  
+}
+postRegister(Map formvalues) async {
+   const String endPoint = 'api/Usuario';
+   const String _host = 'www.garbagereport.somee.com';
+   final url = Uri.https(_host, endPoint);
+   Map<String, String> requestHeaders = {
+      'Content-type': 'application/json',
+      'Accept': 'application/json',
+    };
+   
+   Response response = await post(url, body: json.encode(formvalues), headers: requestHeaders);
+   int status = response.statusCode;
+   return status;
 }
 

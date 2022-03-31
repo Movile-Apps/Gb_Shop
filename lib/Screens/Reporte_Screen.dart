@@ -129,6 +129,15 @@ class ReporteScreen extends StatefulWidget{
    
     @override
     Widget build(BuildContext context) {
+      final Map<String, String> formValues = {
+    'Descripcion' : '',
+    'etiqueta' : '',
+    'Direccion' : '',
+    'Etiqueta' : '',
+    };
+
+    final GlobalKey<FormState> myFormKey = GlobalKey<FormState>();
+
       final List<String> motivodenuncias = [
         'Mucha basura',
         'Insectos',
@@ -159,18 +168,21 @@ class ReporteScreen extends StatefulWidget{
             child: Column(
               children: [
                 Image.asset('assets/Uso/LogReporte.png', height: 200.0,),
-                const ReporteFormFieldWidged(
+                 ReporteFormFieldWidged(
                   labelText: 'Descripcion del lugar', 
                   hintText: 'Describe brevemente que encontraste.',
                   helperText: 'Dinos que fue lo que viste',
-                  icon: Icons.tab_rounded
-                  ),
-                const ReporteFormFieldWidged(
-                  labelText: 'Coordenadas', 
-                  hintText: 'Lat/Long',
+                  icon: Icons.tab_rounded,
+                  propertyName: 'Descripcion',
+                  formValues: formValues),
+
+                 ReporteFormFieldWidged(
+                  labelText: 'Direccion', 
+                  hintText: 'Direccion de la calle',
                   helperText: 'Son dadas por el maps, tranquilo.',
-                  icon: Icons.maps_home_work
-                  ),
+                  icon: Icons.maps_home_work,
+                  propertyName: 'Direccion',
+                  formValues: formValues),
 
                   DropdownButtonFormField(
                     hint: const Text('Selecciona una etiqueta'),
@@ -179,7 +191,8 @@ class ReporteScreen extends StatefulWidget{
                     .map((motivodenuncia) => 
                     DropdownMenuItem(child: Text(motivodenuncia), value: motivodenuncia.toLowerCase()))
                     .toList(),
-                onChanged: (value) {}),
+                    
+                onChanged: (value) {},),
                 //Boton para camara
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: Colors.amber),
