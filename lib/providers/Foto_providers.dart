@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/retry.dart';
 
 class FotoProvider extends ChangeNotifier{
-  ResponseList request = new ResponseList();
+  ResponseList request = ResponseList();
   final String _host ='www.garbagereport.somee.com';
   //final Map<String, dynamic> _parameters = {'key':'960d9f80'};
   FotoProvider(){

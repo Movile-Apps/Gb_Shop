@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/retry.dart';
 
 class UsuarioProvider extends ChangeNotifier{
-  ResponseList request = new ResponseList();
+  ResponseList request = ResponseList();
   final String _host ='www.garbagereport.somee.com';
   //final Map<String, dynamic> _parameters = {'key':'960d9f80'};
   UsuarioProvider(){
@@ -37,6 +37,22 @@ class UsuarioProvider extends ChangeNotifier{
 
     try {
       final response = await client.post(url, headers: {HttpHeaders.contentTypeHeader: 'application/json'}, body: usuarioToJson(usuario));
+      notifyListeners();
+      print(response.body);
+      return decode(json.decode(response.body));
+    } finally {
+      client.close();
+    }
+  }
+
+  Future<Response> getbyid(int id) async{
+    final String endPoint ='/api/Usuario/' + id.toString();
+    final url = Uri.http(_host, endPoint);
+    final client = RetryClient(http.Client());
+
+    try {
+      final response = await client.get(url);
+      notifyListeners();
       print(response.body);
       return decode(json.decode(response.body));
     } finally {
