@@ -36,52 +36,55 @@ class _LoginScreenState extends State<LoginScreen> {
           elevation: 0,
           centerTitle: true,
         ),
-        body: SingleChildScrollView(
-          
-          child: Padding(
+        body: Form(
+          key: myFormKey,
+          child: SingleChildScrollView(
             
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            child: Column(
-              children: [
-                Image.asset('assets/Uso/LogIN.png', height: 200.0,),
-                
-                  loginFormField(
-                  labelText: 'Email', 
-                  hintText: 'ejemplo@gmail.com', 
-                  icon: Icons.email,
-                  propertyName: 'email',
-                  formValues: formValues),
-
-                 loginFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  labelText: 'Contraseña', 
-                  hintText: 'Escribe tu contraseña',
-                  icon: Icons.lock,
-                  propertyName: 'contraseña',
-                  formValues: formValues),
-
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                        primary: Colors.amber
-                      ),
-                  onPressed: () {                   
-                   bool isValidate = myFormKey.currentState?.validate() ?? false;
-                            if (isValidate) {
-                              Future<int> code = postLogin(formValues);
-                              if(postLogin(formValues) == 201){
-                                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const GbShop(),));
+            child: Padding(
+              
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: Column(
+                children: [
+                  Image.asset('assets/Uso/LogIN.png', height: 200.0,),
+                  
+                    loginFormField(
+                    labelText: 'Email', 
+                    hintText: 'ejemplo@gmail.com', 
+                    icon: Icons.email,
+                    propertyName: 'email',
+                    formValues: formValues),
+        
+                   loginFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    labelText: 'Contraseña', 
+                    hintText: 'Escribe tu contraseña',
+                    icon: Icons.lock,
+                    propertyName: 'contraseña',
+                    formValues: formValues),
+        
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                          primary: Colors.amber
+                        ),
+                    onPressed: () {                   
+                     bool isValidate = myFormKey.currentState?.validate() ?? false;
+                              if (isValidate) {
+                                Future<int> code = postLogin(formValues);
+                                if(postLogin(formValues) == 201){
+                                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const GbShop(),));
+                                }
+        
                               }
-
-                            }
-                  },
-                  child: const Text("Iniciar sesión"),
-                ),
-                TextButton(
-                  onPressed: (){
-                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RegistroScreen(),));
-                  }, 
-                  child: const Text('Registrarse'))
-              ],
+                    },
+                    child: const Text("Iniciar sesión"),
+                  ),
+                  TextButton(
+                    onPressed: (){
+                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RegistroScreen(),));
+                    }, 
+                    child: const Text('Registrarse'))
+                ],
+              ),
             ),
           ),
         )

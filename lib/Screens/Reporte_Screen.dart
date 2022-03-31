@@ -165,52 +165,55 @@ class ReporteScreen extends StatefulWidget{
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            child: Column(
-              children: [
-                Image.asset('assets/Uso/LogReporte.png', height: 200.0,),
-                 ReporteFormFieldWidged(
-                  labelText: 'Descripcion del lugar', 
-                  hintText: 'Describe brevemente que encontraste.',
-                  helperText: 'Dinos que fue lo que viste',
-                  icon: Icons.tab_rounded,
-                  propertyName: 'Descripcion',
-                  formValues: formValues),
-
-                 ReporteFormFieldWidged(
-                  labelText: 'Direccion', 
-                  hintText: 'Direccion de la calle',
-                  helperText: 'Son dadas por el maps, tranquilo.',
-                  icon: Icons.maps_home_work,
-                  propertyName: 'Direccion',
-                  formValues: formValues),
-
-                  DropdownButtonFormField(
-                    hint: const Text('Selecciona una etiqueta'),
-                    icon: const Icon(Icons.card_membership),
-                    items: motivodenuncias
-                    .map((motivodenuncia) => 
-                    DropdownMenuItem(child: Text(motivodenuncia), value: motivodenuncia.toLowerCase()))
-                    .toList(),
-                    
-                onChanged: (value) {},),
-                //Boton para camara
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.amber),
-                  onPressed: () {
-                    opciones(context);
-                  },
-                  child: const Text("Selecciona una imagen"),
-                ),
-
-                //Boton de crear cuenta
-                ElevatedButton(
-                  onPressed: () {
-                  },
-                  child: const Text("Crear reporte"),
-                ),
-              imagen == null ? const Center() : Image.file(imagen)
-          ]
-         ),
+            child: Form(
+              key: myFormKey,
+              child: Column(
+                children: [
+                  Image.asset('assets/Uso/LogReporte.png', height: 200.0,),
+                   ReporteFormFieldWidged(
+                    labelText: 'Descripcion del lugar', 
+                    hintText: 'Describe brevemente que encontraste.',
+                    helperText: 'Dinos que fue lo que viste',
+                    icon: Icons.tab_rounded,
+                    propertyName: 'Descripcion',
+                    formValues: formValues),
+            
+                   ReporteFormFieldWidged(
+                    labelText: 'Direccion', 
+                    hintText: 'Direccion de la calle',
+                    helperText: 'Son dadas por el maps, tranquilo.',
+                    icon: Icons.maps_home_work,
+                    propertyName: 'Direccion',
+                    formValues: formValues),
+            
+                    DropdownButtonFormField(
+                      hint: const Text('Selecciona una etiqueta'),
+                      icon: const Icon(Icons.card_membership),
+                      items: motivodenuncias
+                      .map((motivodenuncia) => 
+                      DropdownMenuItem(child: Text(motivodenuncia), value: motivodenuncia.toLowerCase()))
+                      .toList(),
+                      
+                  onChanged: (value) {},),
+                  //Boton para camara
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: Colors.amber),
+                    onPressed: () {
+                      opciones(context);
+                    },
+                    child: const Text("Selecciona una imagen"),
+                  ),
+            
+                  //Boton de crear cuenta
+                  ElevatedButton(
+                    onPressed: () {
+                    },
+                    child: const Text("Crear reporte"),
+                  ),
+                imagen == null ? const Center() : Image.file(imagen)
+                      ]
+                     ),
+            ),
         ),
       )
     )

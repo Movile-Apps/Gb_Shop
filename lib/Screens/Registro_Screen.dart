@@ -144,97 +144,99 @@ class _RegistroScreenState extends State<RegistroScreen> {
           child: Padding(
             
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            child: Column(
-              // ignore: prefer_const_literals_to_create_immutables
-              children: [
-                Image.asset('assets/Uso/Registro.png', height: 200.0,),
-                CustomInputFormFieldWidget(
-                  labelText: 'Email', 
-                  hintText: 'ejemplo@gmail.com', 
-                  icon: Icons.email,
-                  propertyName: 'email',
-                  formValues: formValues),
-
-                CustomInputFormFieldWidget(
-                  labelText: 'Contraseña', 
-                  hintText: 'Escribe una nueva contraseña',
-                  icon: Icons.lock,
-                  propertyName: 'Contraseña',
-                  formValues: formValues),
-
-                CustomInputFormFieldWidget(
-                  labelText: 'Nombre', 
-                  hintText: 'Escribe tu nombre o nombres',
+            child: Form(
+              key: myFormKey,
+              child: Column(
+                children: [
+                  Image.asset('assets/Uso/Registro.png', height: 200.0,),
+                  CustomInputFormFieldWidget(
+                    labelText: 'Email', 
+                    hintText: 'ejemplo@gmail.com', 
+                    icon: Icons.email,
+                    propertyName: 'email',
+                    formValues: formValues),
+            
+                  CustomInputFormFieldWidget(
+                    labelText: 'Contraseña', 
+                    hintText: 'Escribe una nueva contraseña',
+                    icon: Icons.lock,
+                    propertyName: 'Contraseña',
+                    formValues: formValues),
+            
+                  CustomInputFormFieldWidget(
+                    labelText: 'Nombre', 
+                    hintText: 'Escribe tu nombre o nombres',
+                    icon: Icons.person,
+                    propertyName: 'Nombre',
+                    formValues: formValues),
+            
+                  CustomInputFormFieldWidget(labelText: 'Apellidos', 
+                  hintText: 'Escribe tu apellido paterno y materno',
                   icon: Icons.person,
-                  propertyName: 'Nombre',
-                  formValues: formValues),
-
-                CustomInputFormFieldWidget(labelText: 'Apellidos', 
-                hintText: 'Escribe tu apellido paterno y materno',
-                icon: Icons.person,
-                propertyName: 'Apellidos',
-                formValues: formValues,),
-                //Boton para activar la camara
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                        primary: Colors.amber
-                      ),
-                  onPressed: () {
-                    opciones(context);
-                  },
-                  child: const Text("Selecciona una imagen"),
-                ),
-
-                //Botion de crear cuenta
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: const Color.fromARGB(255, 20, 252, 51)
-                      ),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                          child: const Text('Crear cuenta',
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.bold,
-                              
+                  propertyName: 'Apellidos',
+                  formValues: formValues,),
+                  //Boton para activar la camara
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                          primary: Colors.amber
+                        ),
+                    onPressed: () {
+                      opciones(context);
+                    },
+                    child: const Text("Selecciona una imagen"),
+                  ),
+            
+                  //Botion de crear cuenta
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: const Color.fromARGB(255, 20, 252, 51)
+                        ),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                            child: const Text('Crear cuenta',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                                
+                              ),
                             ),
                           ),
-                        ),
-                      onPressed: (){
-                        //Navigator.of(context).pop();
-                        bool isValidate = myFormKey.currentState?.validate() ?? false;
-                            if (isValidate) {
-                              Future<int> code = postRegister(formValues);
-                              if(postRegister(formValues) == 201){
-                                Navigator.pushNamed(context, 'LoginScreen');
+                        onPressed: (){
+                          //Navigator.of(context).pop();
+                          bool isValidate = myFormKey.currentState?.validate() ?? false;
+                              if (isValidate) {
+                                Future<int> code = postRegister(formValues);
+                                if(postRegister(formValues) == 201){
+                                  Navigator.pushNamed(context, 'LoginScreen');
+                                }
                               }
-                            }
-                      }
-                    ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                        primary: const Color.fromARGB(255, 236, 23, 23)
+                        }
                       ),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
-                          child: const Text('Cancelar',
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.bold,
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                          primary: const Color.fromARGB(255, 236, 23, 23)
+                        ),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
+                            child: const Text('Cancelar',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
-                        ),
-                      onPressed: (){
-                        Navigator.of(context).pop();
-                      }
-                    ),
-              ],
-                ),
-                imagen == null ? const Center() : Image.file(imagen)
-              ],
+                        onPressed: (){
+                          Navigator.of(context).pop();
+                        }
+                      ),
+                ],
+                  ),
+                  imagen == null ? const Center() : Image.file(imagen)
+                ],
+              ),
             ),
           ),
         )
