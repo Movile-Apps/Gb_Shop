@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gb_shop/Models/Usuario.dart';
 import 'package:gb_shop/Models/Foto.dart';
 import 'package:gb_shop/Screens/Login_Screen.dart';
+import 'package:gb_shop/main.dart';
 import 'package:provider/provider.dart';
 import '../Models/ResponseList.dart';
 import '../providers/Usuario_provider.dart';
@@ -166,19 +167,11 @@ class _UsuariocreenState extends State<RegistroScreen> {
           onPressed: () {
             if (_formKey.currentState!.validate()) {
               usuarioProvider.post(Usuario1);
-              if (usuarioProvider.request.exito == 1) {
-                Scaffold.of(context)
-                    // ignore: deprecated_member_use, unnecessary_const
-                    .showSnackBar(const SnackBar(
-                        content:
-                             Text('El usuario se  agrego exitosamente')));
-                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
-              } else {
-                Scaffold.of(context)
-                    // ignore: deprecated_member_use, unnecessary_const
-                    .showSnackBar(const SnackBar(
-                        content:  Text('El usuario no se pudo agregar')));
-              }
+                 Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginScreen()));
+              
             }
           },
           child: const Text(

@@ -185,10 +185,15 @@ class ReporteScreen extends StatefulWidget{
                     icon: Icons.maps_home_work,
                     propertyName: 'Direccion',
                     formValues: formValues),
-            
+                    
                     DropdownButtonFormField(
-                      hint: const Text('Selecciona una etiqueta'),
-                      icon: const Icon(Icons.card_membership),
+                      hint:const Text("Selecciona una etiqueta"),
+                      disabledHint:const Text("Descativado"),
+                      elevation: 8,
+                      style:const TextStyle(color:Colors.green, fontSize: 16),
+                      icon: const Icon(Icons.arrow_drop_down_circle_outlined),
+                      iconDisabledColor: Colors.red,
+                      iconEnabledColor: Colors.green,
                       items: motivodenuncias
                       .map((motivodenuncia) => 
                       DropdownMenuItem(child: Text(motivodenuncia), value: motivodenuncia.toLowerCase()))
@@ -197,18 +202,19 @@ class ReporteScreen extends StatefulWidget{
                   onChanged: (value) {},),
                   //Boton para camara
                   ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: Colors.amber),
+                    style: ElevatedButton.styleFrom(primary: Color.fromARGB(255, 250, 194, 39)),
                     onPressed: () {
                       opciones(context);
                     },
-                    child: const Text("Selecciona una imagen"),
+                    child: const Text("Selecciona una imagen", style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
                   ),
             
                   //Boton de crear cuenta
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: Color.fromARGB(255, 75, 250, 142)),
                     onPressed: () {
                     },
-                    child: const Text("Crear reporte"),
+                    child: const Text("Crear reporte", style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
                   ),
                 imagen == null ? const Center() : Image.file(imagen)
                       ]

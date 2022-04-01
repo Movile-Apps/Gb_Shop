@@ -103,21 +103,13 @@ class _UsuarioScreenState extends State<LoginScreen> {
           onPressed: () {
             if (_formKey.currentState!.validate()) {
               usuarioProvider.post(Usuario1);
-              if (usuarioProvider.request.exito == 1) {
-                Scaffold.of(context)
-                    // ignore: deprecated_member_use, unnecessary_const
-                    .showSnackBar(const SnackBar(
-                        content:
-                             Text('Bienvenido')));
-                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => const GbShop(),));
-              } else {
-                Scaffold.of(context)
-                    // ignore: deprecated_member_use, unnecessary_const
-                    .showSnackBar(const SnackBar(
-                        content:  Text('El usuario no se pudo agregar')));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const GbShop()));
               }
-            }
-          },
+            },
+
           child: const Text(
             "Iniciar sesión",
             textAlign: TextAlign.center,

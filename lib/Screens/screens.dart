@@ -6,4 +6,4 @@ export 'package:gb_shop/Screens/Registro_Screen.dart';
 export 'package:gb_shop/Screens/Login_Screen.dart';
 export 'package:gb_shop/Screens/Map_Screen.dart';
 export 'package:gb_shop/Screens/Perfil_Screen.dart';
-export 'package:gb_shop/Screens/Depuracion_Screen.dart';
+//export 'package:gb_shop/Screens/Depuracion_Screen.dart';
