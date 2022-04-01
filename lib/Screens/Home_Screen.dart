@@ -33,7 +33,7 @@ import 'package:gb_shop/Models/ResponseList.dart' as response;
           IconButton(
             icon: const Icon(Icons.extension_sharp),
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Usuarios(),));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
             },
           ),
         ],

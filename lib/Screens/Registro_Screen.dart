@@ -1,268 +1,235 @@
 
-import 'dart:convert';
+// ignore_for_file: unused_local_variable
 import 'package:flutter/material.dart';
-import 'package:gb_shop/Models/usuario.dart';
-import 'package:gb_shop/Widgets/custom_Input_form_field_widget.dart';
-import 'package:http/http.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:gb_shop/Models/Usuario.dart';
+import 'package:gb_shop/Models/Foto.dart';
+import 'package:gb_shop/Screens/Login_Screen.dart';
 import 'package:provider/provider.dart';
-import 'dart:io';
-
 import '../Models/ResponseList.dart';
 import '../providers/Usuario_provider.dart';
 
-
-class RegistroScreen extends StatefulWidget{
-  static String id = 'RegistroScreen';
+class RegistroScreen extends StatefulWidget {
   const RegistroScreen({Key? key}) : super(key: key);
 
-  @override 
-  _RegistroScreenState createState() => _RegistroScreenState();
+  @override
+  _UsuariocreenState createState() => _UsuariocreenState();
 }
 
-class _RegistroScreenState extends State<RegistroScreen> {
-
-  var imagen;
-  final picker = ImagePicker();
-
-  Future selImagen(op) async{
-
-    PickedFile? pickedFile;
-
-    if(op == 1){
-      pickedFile = (await picker.pickImage(source: ImageSource.camera)) as PickedFile?;
-
-    }else{
-      pickedFile = (await picker.pickImage(source: ImageSource.gallery)) as PickedFile?;
-    }
-
-    setState(() {
-      if(pickedFile !=null){
-        imagen = File(pickedFile.path);
-      }else{
-        // ignore: avoid_print
-        print('No elegiste ninguna foto');
-      }
-    });
-
-    Navigator.of(context).pop();
-
-  }
-
-  opciones(context){
-    showDialog(
-      context: context,
-      builder: (BuildContext context){
-        return AlertDialog(
-          contentPadding: const EdgeInsets.all(0),
-          content: SingleChildScrollView(
-            child: Column(
-              children: [
-
-                InkWell(
-                  onTap: (){
-                    selImagen(1);
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(20),
-                    decoration: const BoxDecoration(
-                      border: Border(bottom: BorderSide(width: 1, color: Colors.green))
-                    ),
-                    child: Row(
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        const Expanded(child: Text('Tomar una foto', style: TextStyle(fontSize: 16),
-                         )
-                        ),
-                        const Icon(Icons.camera, color: Color.fromARGB(255, 106, 223, 145))
-                      ],
-                    ),
-                  ),
-                ),
-                InkWell(
-                  onTap: (){
-                    selImagen(2);
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(20),
-                    child: Row(
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        const Expanded(child: Text('Seleccionar una foto', style: TextStyle(fontSize: 16),
-                         )
-                        ),
-                        const Icon(Icons.image, color: Color.fromARGB(255, 106, 223, 145))
-                      ],
-                    ),
-                  ),
-                ),
-
-                InkWell(
-                  onTap: (){
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: const BoxDecoration(
-                      color: Colors.red
-                    ),
-                    child: Row(
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        const Expanded(child: Text('Cancelar', style: TextStyle(fontSize: 16, color: Colors.white),
-                        textAlign: TextAlign.center,
-                         )
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        );
-      }
-    );
-  }
+class _UsuariocreenState extends State<RegistroScreen> {
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-      final usuarioProvider = Provider.of<UsuarioProvider>(context);
+    
+
+     final usuarioProvider = Provider.of<UsuarioProvider>(context);
       final ResponseList reporte = usuarioProvider.request;
-      final Usuario usuario1 = Usuario();
+      final Usuario Usuario1 = Usuario(idUsuario: 0, idFoto: 0, fotoRequest: Foto(idFoto: 0, nombre: null, url: null));
 
-    final Map<String, String> formValues = {
-    'Email' : '',
-    'Contraseña' : '',
-    'Nombre' : '',
-    'Apellidos' : '',
-    };
+    //first name field
+    final nombreusuario = TextFormField(
+        autofocus: true,
+        autocorrect: true,
+        maxLines: 1,
+        keyboardType: TextInputType.name,
+        style: const TextStyle(color: Colors.black),
+        initialValue: Usuario1.nombre,
+        onChanged: (value) => Usuario1.nombre = value,
+        validator: (value) {
+          RegExp regex = RegExp(r'^.{3,}$');
+          if (value!.isEmpty) {
+            return ("Este campo es obligatorio");
+          }
+          if (!regex.hasMatch(value)) {
+            return ("Tan siquiera 3 caracteres por favooor");
+          }
+          return null;
+        },
+        textInputAction: TextInputAction.next,
+        decoration: InputDecoration(
+          prefixIcon: const Icon(
+            Icons.supervised_user_circle_rounded,
+            color: Color.fromARGB(255, 119, 238, 89)
+          ),
+          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+          labelText: 'Nombre',
+          hintText: "Ingresa tu nombre de pila",
+          hintStyle: const TextStyle(color: Colors.grey),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ));
 
-    final GlobalKey<FormState> myFormKey = GlobalKey<FormState>();
-    return SafeArea(
-      child: 
-      Scaffold(
+    //second name field
+    final apellidosusuario = TextFormField(
+        autofocus: false,
+        autocorrect: true,
+        initialValue: Usuario1.apellido,
+        onChanged: (value) => Usuario1.apellido = value,
+        maxLines: 1,
+        keyboardType: TextInputType.streetAddress,
+        style: const TextStyle(color: Colors.black),
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Por favor llena el campo';
+          }
+          if (value.length > 40) {
+            return ("No  puede escribir mas de  40 caracteres.");
+          }
+          return null;
+        },
+        textInputAction: TextInputAction.next,
+        decoration: InputDecoration(
+          prefixIcon: const Icon(
+            Icons.mail,
+            color: Color.fromARGB(255, 119, 238, 89)
+          ),
+          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+          labelText: 'Apellidos',
+          hintText: "Paterno y Materno",
+          hintStyle: const TextStyle(color: Colors.grey),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ));
+
+    //  Correo
+    final correousuario = TextFormField(
+        autofocus: false,
+        autocorrect: true,
+        maxLines: 1,
+        initialValue: Usuario1.correo,
+        onChanged: (value) => Usuario1.correo = value,
+        style: const TextStyle(color: Colors.black),
+        validator: (value) {
+          // ignore: unnecessary_new
+          if (value == null || value.isEmpty) {
+            return 'Por favor llena el campo';
+          }
+          if (value.length > 50) {
+            return ("No  puede escribir mas de  50 caracteres.");
+          }
+
+          return null;
+        },
+        textInputAction: TextInputAction.next,
+        decoration: InputDecoration(
+          prefixIcon: const Icon(
+            Icons.lock_clock,
+            color:Color.fromARGB(255, 119, 238, 89)
+          ),
+          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+          labelText: 'Correo electronico',
+          hintText: "Ejemplo@gmail.com",
+          hintStyle: const TextStyle(color: Colors.grey),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ));
+
+    //password field
+    final passousuario = TextFormField(
+        initialValue: Usuario1.contrasea,
+        autofocus: false,
+        autocorrect: true,
+        maxLines: 1,
+        keyboardType: TextInputType.name,
+        style: const TextStyle(color: Colors.black),
+        onChanged: (value) => Usuario1.contrasea = value,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Este campo es obligatorio';
+          }
+          return null;
+        },
+        decoration: InputDecoration(
+          prefixIcon: const Icon(
+            Icons.lock,
+            color:Color.fromARGB(255, 119, 238, 89)
+          ),
+          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+          labelText: 'Contraseña',
+          hintText: "No se la pases a nadie...",
+          hintStyle: const TextStyle(color: Colors.grey),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ));
+    //signup button
+    final siguienteusuario = Material(
+      elevation: 5,
+      borderRadius: BorderRadius.circular(10),
+      color: Colors.amber,
+      child: MaterialButton(
+          padding: const EdgeInsets.fromLTRB(5, 10, 10, 5),
+          minWidth: MediaQuery.of(context).size.width,
+          onPressed: () {
+            if (_formKey.currentState!.validate()) {
+              usuarioProvider.post(Usuario1);
+              if (usuarioProvider.request.exito == 1) {
+                Scaffold.of(context)
+                    // ignore: deprecated_member_use, unnecessary_const
+                    .showSnackBar(const SnackBar(
+                        content:
+                             Text('El usuario se  agrego exitosamente')));
+                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
+              } else {
+                Scaffold.of(context)
+                    // ignore: deprecated_member_use, unnecessary_const
+                    .showSnackBar(const SnackBar(
+                        content:  Text('El usuario no se pudo agregar')));
+              }
+            }
+          },
+          child: const Text(
+            "Registrarse",
+            textAlign: TextAlign.center,
+            // ignore: unnecessary_const
+            style: const TextStyle(
+                fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+          )),
+    );
+
+    return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.greenAccent,
           title: Image.asset('assets/Uso/TexLogo.png', width: 600, height: 800,),
           elevation: 0,
           centerTitle: true,
         ),
-        body: SingleChildScrollView(
+        body: Center(
+        child: SingleChildScrollView(
           child: Padding(
-            
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            padding: const EdgeInsets.all(30.0),
             child: Form(
-              key: myFormKey,
+              key: _formKey,
               child: Column(
-                children: [
-                  Image.asset('assets/Uso/Registro.png', height: 200.0,),
-                  CustomInputFormFieldWidget(
-                    labelText: 'Email', 
-                    hintText: 'ejemplo@gmail.com', 
-                    icon: Icons.email,
-                    propertyName: 'email',
-                    formValues: formValues),
-            
-                  CustomInputFormFieldWidget(
-                    labelText: 'Contraseña', 
-                    hintText: 'Escribe una nueva contraseña',
-                    icon: Icons.lock,
-                    propertyName: 'Contraseña',
-                    formValues: formValues),
-            
-                  CustomInputFormFieldWidget(
-                    labelText: 'Nombre', 
-                    hintText: 'Escribe tu nombre o nombres',
-                    icon: Icons.person,
-                    propertyName: 'Nombre',
-                    formValues: formValues),
-            
-                  CustomInputFormFieldWidget(labelText: 'Apellidos', 
-                  hintText: 'Escribe tu apellido paterno y materno',
-                  icon: Icons.person,
-                  propertyName: 'Apellidos',
-                  formValues: formValues,),
-                  //Boton para activar la camara
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                          primary: Colors.amber
-                        ),
-                    onPressed: () {
-                      opciones(context);
-                    },
-                    child: const Text("Selecciona una imagen"),
-                  ),
-            
-                  //Botion de crear cuenta
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          primary: const Color.fromARGB(255, 20, 252, 51)
-                        ),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                            child: const Text('Crear cuenta',
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.bold,
-                                
-                              ),
-                            ),
-                          ),
-                        onPressed: (){
-                          //Navigator.of(context).pop();
-                          bool isValidate = myFormKey.currentState?.validate() ?? false;
-                              if (isValidate) {
-                                Future<int> code = postRegister(formValues);
-                                if(postRegister(formValues) == 201){
-                                  Navigator.pushNamed(context, 'LoginScreen');
-                                }
-                              }
-                        }
-                      ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                          primary: const Color.fromARGB(255, 236, 23, 23)
-                        ),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
-                            child: const Text('Cancelar',
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        onPressed: (){
-                          Navigator.of(context).pop();
-                        }
-                      ),
-                ],
-                  ),
-                  imagen == null ? const Center() : Image.file(imagen)
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                      height: 180,
+                      child: Image.asset(
+                        "assets/Uso/Registro.png",
+                        fit: BoxFit.contain,
+                      )),
+                  const SizedBox(height: 45),
+                  nombreusuario,
+                  const SizedBox(height: 20),
+                  apellidosusuario,
+                  const SizedBox(height: 20),
+                  correousuario,
+                  const SizedBox(height: 20),
+                  passousuario,
+                  const SizedBox(height: 20),
+                  siguienteusuario,
+                  const SizedBox(height: 15),
                 ],
               ),
             ),
           ),
-        )
-    )
-  ); 
- }  
+        ),
+      ),
+    );
+  }
 }
-postRegister(Map formvalues) async {
-   const String endPoint = 'api/Usuario';
-   const String _host = 'www.garbagereport.somee.com';
-   final url = Uri.https(_host, endPoint);
-   Map<String, String> requestHeaders = {
-      'Content-type': 'application/json',
-      'Accept': 'application/json',
-    };
-   
-   Response response = await post(url, body: json.encode(formvalues), headers: requestHeaders);
-   int status = response.statusCode;
-   return status;
-}
-

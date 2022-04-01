@@ -2,19 +2,21 @@
 // ignore_for_file: unused_local_variable
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Models/Usuario.dart';
+import 'package:gb_shop/Models/Foto.dart';
 import 'package:gb_shop/Screens/Login_Screen.dart';
 import 'package:provider/provider.dart';
 import '../Models/ResponseList.dart';
 import '../providers/Usuario_provider.dart';
+import 'Registro_Screen.dart';
 
-class Usuarios extends StatefulWidget {
-  const Usuarios({Key? key}) : super(key: key);
+class loginScreens extends StatefulWidget {
+  const loginScreens({Key? key}) : super(key: key);
 
   @override
-  _UsuariocreenState createState() => _UsuariocreenState();
+  _UsuarioScreenState createState() => _UsuarioScreenState();
 }
 
-class _UsuariocreenState extends State<Usuarios> {
+class _UsuarioScreenState extends State<loginScreens> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -23,74 +25,8 @@ class _UsuariocreenState extends State<Usuarios> {
 
      final usuarioProvider = Provider.of<UsuarioProvider>(context);
       final ResponseList reporte = usuarioProvider.request;
-      final Usuario Usuario1 = Usuario(idUsuario: 0);
-
-    //first name field
-    final nombreusuario = TextFormField(
-        autofocus: true,
-        autocorrect: true,
-        maxLines: 1,
-        keyboardType: TextInputType.name,
-        style: const TextStyle(color: Colors.black),
-        initialValue: Usuario1.nombre,
-        onChanged: (value) => Usuario1.nombre = value,
-        validator: (value) {
-          RegExp regex = RegExp(r'^.{3,}$');
-          if (value!.isEmpty) {
-            return ("Este campo es obligatorio");
-          }
-          if (!regex.hasMatch(value)) {
-            return ("Tan siquiera 3 caracteres por favooor");
-          }
-          return null;
-        },
-        textInputAction: TextInputAction.next,
-        decoration: InputDecoration(
-          prefixIcon: const Icon(
-            Icons.supervised_user_circle_rounded,
-            color: Color.fromARGB(255, 119, 238, 89)
-          ),
-          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-          labelText: 'Nombre',
-          hintText: "Ingresa tu nombre de pila",
-          hintStyle: const TextStyle(color: Colors.grey),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ));
-
-    //second name field
-    final apellidosusuario = TextFormField(
-        autofocus: false,
-        autocorrect: true,
-        initialValue: Usuario1.apellido,
-        onChanged: (value) => Usuario1.apellido = value,
-        maxLines: 1,
-        keyboardType: TextInputType.streetAddress,
-        style: const TextStyle(color: Colors.black),
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'Por favor llena el campo';
-          }
-          if (value.length > 40) {
-            return ("No  puede escribir mas de  40 caracteres.");
-          }
-          return null;
-        },
-        textInputAction: TextInputAction.next,
-        decoration: InputDecoration(
-          prefixIcon: const Icon(
-            Icons.mail,
-            color: Color.fromARGB(255, 119, 238, 89)
-          ),
-          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-          labelText: 'Apellidos',
-          hintText: "Paterno y Materno",
-          hintStyle: const TextStyle(color: Colors.grey),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ));
+      final Usuario Usuario1 = Usuario(idUsuario: 0, idFoto: 0, fotoRequest: Foto(idFoto: 0, nombre: null, url: null));
+  
 
     //  Correo
     final correousuario = TextFormField(
@@ -148,13 +84,15 @@ class _UsuariocreenState extends State<Usuarios> {
           ),
           contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           labelText: 'Contraseña',
-          hintText: "No se la pases a nadie...",
+          hintText: "Sé que la recuerdas",
           hintStyle: const TextStyle(color: Colors.grey),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
         ));
+
     //signup button
+    
     final siguienteusuario = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(10),
@@ -171,11 +109,7 @@ class _UsuariocreenState extends State<Usuarios> {
                     .showSnackBar(const SnackBar(
                         content:
                              Text('El usuario se  agrego exitosamente')));
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const LoginScreen(),
-                    ));
+                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
               } else {
                 Scaffold.of(context)
                     // ignore: deprecated_member_use, unnecessary_const
@@ -185,7 +119,7 @@ class _UsuariocreenState extends State<Usuarios> {
             }
           },
           child: const Text(
-            "Registrarse",
+            "Iniciar sesión",
             textAlign: TextAlign.center,
             // ignore: unnecessary_const
             style: const TextStyle(
@@ -196,14 +130,14 @@ class _UsuariocreenState extends State<Usuarios> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.greenAccent,
-          title: Image.asset('assets/Uso/TexLogo.png', width: 600, height: 800,),
+          title: Image.asset('assets/Uso/TexLogo.png'),
           elevation: 0,
           centerTitle: true,
         ),
         body: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.all(25.0),
             child: Form(
               key: _formKey,
               child: Column(
@@ -211,15 +145,12 @@ class _UsuariocreenState extends State<Usuarios> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   SizedBox(
-                      height: 180,
+                      height: 250,
                       child: Image.asset(
                         "assets/Uso/Registro.png",
                         fit: BoxFit.contain,
                       )),
                   const SizedBox(height: 45),
-                  nombreusuario,
-                  const SizedBox(height: 20),
-                  apellidosusuario,
                   const SizedBox(height: 20),
                   correousuario,
                   const SizedBox(height: 20),
@@ -227,6 +158,11 @@ class _UsuariocreenState extends State<Usuarios> {
                   const SizedBox(height: 20),
                   siguienteusuario,
                   const SizedBox(height: 15),
+                  TextButton(
+                    onPressed: (){
+                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => const RegistroScreen(),));
+                    }, 
+                    child: const Text('Registrarse'))
                 ],
               ),
             ),
