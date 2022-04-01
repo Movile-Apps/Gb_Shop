@@ -16,12 +16,16 @@ class LoginScreen extends StatefulWidget {
   _UsuarioScreenState createState() => _UsuarioScreenState();
 }
 
+bool _obscureText = true;
+
 class _UsuarioScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
+  
 
   @override
   Widget build(BuildContext context) {
-    
+    bool _obscureText = true;
+    String _password = '';
 
      final usuarioProvider = Provider.of<UsuarioProvider>(context);
       final ResponseList reporte = usuarioProvider.request;
@@ -58,18 +62,20 @@ class _UsuarioScreenState extends State<LoginScreen> {
           hintText: "Ejemplo@gmail.com",
           hintStyle: const TextStyle(color: Colors.grey),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10),
           ),
         ));
 
-    //password field
+    //Contraseñaaaaaaa
     final passousuario = TextFormField(
+      
         initialValue: Usuario1.contrasea,
         autofocus: false,
         autocorrect: true,
         maxLines: 1,
         keyboardType: TextInputType.name,
         style: const TextStyle(color: Colors.black),
+        obscureText: _obscureText,
         onChanged: (value) => Usuario1.contrasea = value,
         validator: (value) {
           if (value == null || value.isEmpty) {
@@ -78,16 +84,14 @@ class _UsuarioScreenState extends State<LoginScreen> {
           return null;
         },
         decoration: InputDecoration(
-          prefixIcon: const Icon(
-            Icons.lock,
-            color:Color.fromARGB(255, 119, 238, 89)
-          ),
+          prefixIcon: const Icon(Icons.lock, color:Color.fromARGB(255, 119, 238, 89)),
+          
           contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           labelText: 'Contraseña',
           hintText: "Sé que la recuerdas",
           hintStyle: const TextStyle(color: Colors.grey),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10),
           ),
         ));
 

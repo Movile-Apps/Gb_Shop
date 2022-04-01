@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gb_shop/Screens/screens.dart';
-import 'package:gb_shop/providers/Usuario_provider.dart';
-import 'package:gb_shop/Models/ResponseList.dart';
-import 'package:provider/provider.dart';
+
+import '../main.dart';
 
 class PerfilScreen extends StatelessWidget {
   const PerfilScreen({Key? key}) : super(key: key);
 
   @override
     Widget build(BuildContext context) {
-      final usuarioProvider = Provider.of<UsuarioProvider>(context);
-      final ResponseList usuario = usuarioProvider.request;
       //final usuario = usuarioProvaider.getbyid(1)
 
       return  Scaffold(
@@ -28,8 +25,6 @@ class PerfilScreen extends StatelessWidget {
                 _perfilimage(),
                 Column( mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-
-                    ...?usuario.data?.map((usuario) => 
                     Card(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -37,16 +32,16 @@ class PerfilScreen extends StatelessWidget {
                        const ListTile(
                         leading: Icon(Icons.person_pin, color: Color.fromARGB(255, 132, 236, 123)),
                         title: Text('Datos personales:', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),),
-                      Text('Nombre completo: ${usuario.nombre} ${usuario.apellido}', style: const TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
-                      Text('Email: ${usuario.correo}', style: const TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
+                      const Text('Nombre completo: Rafael Cauich Colli', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
+                      const Text('Email: xxrafafloxx@gmail.com', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
                       const Text('Contraseña: *********', style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
                       Container(
                         alignment: Alignment.center,
                       ) ,
                     ],
                   ),
-                )
-            ),
+                ),
+
 
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -103,7 +98,7 @@ class PerfilScreen extends StatelessWidget {
                               ),
                               TextButton(
                                 onPressed: (){
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginScreen(),));
+                                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const LoginScreen(),));
                                 }
                                 ,child: const Text('Confirmar'),
                               ),
@@ -130,7 +125,7 @@ class PerfilScreen extends StatelessWidget {
          shape: BoxShape.circle,
          image: DecorationImage(
              fit: BoxFit.fill,
-             image: NetworkImage("https://i.imgur.com/BoN9kdC.png")
+             image: NetworkImage("https://e.rpp-noticias.io/normal/2022/03/30/375337_1239610.jpg")
         )
       )
     );

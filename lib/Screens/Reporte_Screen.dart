@@ -187,11 +187,12 @@ class ReporteScreen extends StatefulWidget{
                     formValues: formValues),
                     
                     DropdownButtonFormField(
+
                       hint:const Text("Selecciona una etiqueta"),
                       disabledHint:const Text("Descativado"),
                       elevation: 8,
                       style:const TextStyle(color:Colors.green, fontSize: 16),
-                      icon: const Icon(Icons.arrow_drop_down_circle_outlined),
+                      icon: const Icon(Icons.arrow_drop_down_circle_outlined,),
                       iconDisabledColor: Colors.red,
                       iconEnabledColor: Colors.green,
                       items: motivodenuncias
@@ -202,7 +203,7 @@ class ReporteScreen extends StatefulWidget{
                   onChanged: (value) {},),
                   //Boton para camara
                   ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: Color.fromARGB(255, 250, 194, 39)),
+                    style: ElevatedButton.styleFrom(primary: const Color.fromARGB(255, 250, 194, 39)),
                     onPressed: () {
                       opciones(context);
                     },
@@ -211,7 +212,7 @@ class ReporteScreen extends StatefulWidget{
             
                   //Boton de crear cuenta
                   ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: Color.fromARGB(255, 75, 250, 142)),
+                    style: ElevatedButton.styleFrom(primary: const Color.fromARGB(255, 75, 250, 142)),
                     onPressed: () {
                     },
                     child: const Text("Crear reporte", style: TextStyle(color: Color.fromARGB(255, 0, 2, 3), ),),
