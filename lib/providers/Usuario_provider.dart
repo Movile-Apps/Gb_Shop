@@ -37,7 +37,7 @@ class UsuarioProvider extends ChangeNotifier{
 
     try {
       final response = await client.post(url, headers: {HttpHeaders.contentTypeHeader: 'application/json'}, body: usuarioToJson(usuario));
-      notifyListeners();
+     // notifyListeners();
       print(response.body);
       return decode(json.decode(response.body));
     } finally {

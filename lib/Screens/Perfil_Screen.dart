@@ -11,6 +11,7 @@ class PerfilScreen extends StatelessWidget {
     Widget build(BuildContext context) {
       final usuarioProvider = Provider.of<UsuarioProvider>(context);
       final ResponseList usuario = usuarioProvider.request;
+      //final usuario = usuarioProvaider.getbyid(1)
 
       return  Scaffold(
         appBar: AppBar(

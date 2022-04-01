@@ -1,10 +1,15 @@
 
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:gb_shop/Models/usuario.dart';
 import 'package:gb_shop/Widgets/custom_Input_form_field_widget.dart';
 import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 import 'dart:io';
+
+import '../Models/ResponseList.dart';
+import '../providers/Usuario_provider.dart';
 
 
 class RegistroScreen extends StatefulWidget{
@@ -122,6 +127,9 @@ class _RegistroScreenState extends State<RegistroScreen> {
 
   @override
   Widget build(BuildContext context) {
+      final usuarioProvider = Provider.of<UsuarioProvider>(context);
+      final ResponseList reporte = usuarioProvider.request;
+      final Usuario usuario1 = Usuario();
 
     final Map<String, String> formValues = {
     'Email' : '',
